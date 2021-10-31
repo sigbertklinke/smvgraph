@@ -1,9 +1,8 @@
 # smvgraph
 
-osaic diagram, scatterplot matrix, Andrews curves, parallel coordinate diagram, radar diagram, and Chernoff plots  as a Shiny app, which allow the order of variables to be changed interactively. The apps are intended as teaching examples.
+Mosaic diagram, scatterplot matrix, Andrews curves, parallel coordinate diagram, radar diagram, and Chernoff plots  as a Shiny app, which allow the order of variables to be changed interactively. The apps are intended as teaching examples.
 
 ```r
-# Count the number of words, number of characters or non-whitespace characters of files
 library("smvgraph")
 smosaic(Titanic)
 sandrews(iris)
