@@ -11,8 +11,8 @@
 #' @import shiny
 #' @import shinydashboard
 #' @import sortable
-#' @importFrom MASS parcoord
 #' @importFrom graphics par
+#' @importFrom fmsb radarchart
 #' @export
 #'
 #' @examples

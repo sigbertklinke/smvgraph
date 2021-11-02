@@ -1,8 +1,8 @@
 Package: smvgraph
 Type: Package
 Title: Various Multivariate Graphics with Interactive Variable Selection in Shiny Apps
-Version: 0.1.0
-Date: 2021-10-31
+Version: 0.1.1
+Date: 2021-11-02
 Authors@R: 
   person("Sigbert", "Klinke", email="sigbert@hu-berlin.de", role=c("aut", "cre"))
 Description: Mosaic diagram, scatterplot matrix, Andrews curves, parallel coordinate diagram, radar diagram, 

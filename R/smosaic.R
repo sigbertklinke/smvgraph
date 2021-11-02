@@ -12,6 +12,7 @@
 #' @import shiny
 #' @import shinydashboard
 #' @import sortable
+#' @importFrom graphics mosaicplot
 #' @export
 #'
 #' @examples
