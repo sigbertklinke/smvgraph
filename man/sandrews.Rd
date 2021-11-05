@@ -20,5 +20,5 @@ nothing
 Shiny app for creating an Andrews curve diagram with interactive variable selection.
 }
 \examples{
-if (interactive()) sandrews(normalize(iris))
+if (interactive()) sandrews(iris)
 }

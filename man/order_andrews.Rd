@@ -21,7 +21,8 @@ order of column vectors
 }
 \description{
 Returns a reording of the columns of \code{x} to visualize outliers or clusters better.
+If no colum names are given then \code{V1}, \code{V2}, ... will be used.
 }
 \examples{
-order_andrews(normalize(iris))
+order_andrews(iris)
 }

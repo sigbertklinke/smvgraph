@@ -20,12 +20,13 @@ sparcoord <- function(data, xvar=character(0), ...) {
   main         <- paste(deparse(substitute(data), 500), collapse = "\n")
   if (is.data.frame(data)) data <- as.matrix(data[,sapply(data, is.numeric)])
   stopifnot("matrix" %in% class(data))
+  if (is.null(colnames(data))) colnames(data) <- sprintf("%s[,%.0f]", main, 1:ncol(data))
   dvar <- dimnames(data)[[2]]
   if (length(xvar)) {
     xvar <- xvar[xvar %in% dvar]
     dvar <- setdiff(dvar, xvar)
   } else {
-    xvar <- dvar[order_andrews(data)]
+    xvar <- dvar
     dvar <- NULL
   }
   #

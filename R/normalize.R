@@ -22,7 +22,7 @@ normalize <- function(x, method=1) {
   if (method==1) {
     mi <- apply(x, 2, min, na.rm=TRUE)
     ma <- apply(x, 2, max, na.rm=TRUE)
-    x <- scale(x, center=mi, scale=ma-mi)
+    x  <- scale(x, center=mi, scale=ma-mi)
   }
   if (method==2) x <- scale(x)
   x

@@ -20,12 +20,22 @@
 #' dfTitanic <- table2dataframe(Titanic)
 #' if (interactive()) smosaic(dfTitanic)
 smosaic <- function(data, xvar=character(0), yvar=character(0), ...) {
-  main         <- paste(deparse(substitute(data), 500), collapse = "\n")
-  is_dataframe <- "data.frame" %in% class(data)
-  if (is_dataframe) data <- table(data)
-  stopifnot("table" %in% class(data))
+  main <- paste(deparse(substitute(data), 500), collapse = "\n")
+  obj  <- c("matrix", "data.frame", "table") %in% class(data)
+  stopifnot(any(obj))
+  totab <- main
+  if (!obj[3]) { # no table
+    if (!obj[2]) { # no data frame
+      totab <- sprintf("as.data.frame(%s)", totab)
+      data <- as.data.frame(data)  # matrix -> data.frame
+    }      
+    totab <- sprintf("table(%s)", totab)
+    data  <- table(data)
+  }
+  if (is.null(dimnames(data))) dimnames(data) <- sapply(dim(data), seq)
+  if (is.null(names(dimnames(data)))) names(dimnames(data)) <- sprintf("%s[,%.0f]", main, seq(length(dim(data))))
   dvar <- names(dimnames(data))
-  stopifnot(length(dvar)>1)  # not enough factor variables found
+  stopifnot(length(dvar)>1)  # not enough variables found
   ivar <- intersect(xvar, yvar)
   xvar <- setdiff(xvar, ivar)
   yvar <- setdiff(yvar, ivar)
@@ -83,7 +93,7 @@ smosaic <- function(data, xvar=character(0), yvar=character(0), ...) {
       output$command <- renderText({
         txt <- "At least two variables are required for a plot!"
         if ((length(input$xvar)>0) && (length(input$yvar)>0)) {
-          txt <- c(if (is_dataframe) paste0(" tab <- table(", main, ")\n") else paste0(" tab <- ", main, "\n"),
+          txt <- c(paste0(" tab <- ", totab, "\n"),
                    paste0("x   <- c(", paste0('"', input$xvar, '"', collapse=", "), ")\n"),
                    paste0("y   <- c(", paste0('"', input$yvar, '"', collapse=", "), ")\n"),
                    "tab <- apply(tab, c(x, y), sum)\n",

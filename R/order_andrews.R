@@ -1,6 +1,7 @@
 #' order_andrews
 #'
 #' Returns a reording of the columns of \code{x} to visualize outliers or clusters better.
+#' If no colum names are given then \code{V1}, \code{V2}, ... will be used.
 #'
 #' @param x data matrix
 #' @param method numeric: order method (default: \code{1})
@@ -15,7 +16,7 @@
 #' @export
 #'
 #' @examples
-#' order_andrews(normalize(iris))
+#' order_andrews(iris)
 order_andrews <- function(x, method=1) {
   x <- normalize(x, 0)
   if (method==1) o <- apply(x, 2, IQR, na.rm=TRUE)
@@ -24,5 +25,6 @@ order_andrews <- function(x, method=1) {
     hc <- hclust(dist(x), method="ward.D2")
     o  <- apply(x, 2, function(v) { abs(cor(order(v), hc$order, method = "spearman")) })
   }
-  order(o, decreasing = TRUE)
+  o <- order(o, decreasing = TRUE)
+  colnames(x)[o]
 }

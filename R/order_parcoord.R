@@ -1,7 +1,8 @@
 #' order_parcoord
 #'
 #' Returns a reordering of the columns of \code{x} to visualize highly correlated variable pairs
-#' based on a cluster analysis of the correlation matrix.
+#' based on a cluster analysis of the correlation matrix. 
+#' If no colum names are given then \code{V1}, \code{V2}, ... will be used.
 #'
 #' @param x data matrix
 #' @param method numeric: order method (default: \code{"spearman"})
