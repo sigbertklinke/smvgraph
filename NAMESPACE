@@ -3,6 +3,7 @@
 export(andrews)
 export(normalize)
 export(order_andrews)
+export(order_parcoord)
 export(sandrews)
 export(schernoff)
 export(smosaic)

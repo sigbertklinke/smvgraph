@@ -18,6 +18,7 @@
 normalize <- function(x, method=1) {
   if (is.data.frame(x)) x <- as.matrix(x[,sapply(x, is.numeric)])
   stopifnot("matrix" %in% class(x))
+  if (is.null(colnames(x))) colnames(x) <- sprintf("V%.0f", 1:ncol(x))
   if (method==1) {
     mi <- apply(x, 2, min, na.rm=TRUE)
     ma <- apply(x, 2, max, na.rm=TRUE)

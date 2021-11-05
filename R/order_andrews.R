@@ -17,6 +17,7 @@
 #' @examples
 #' order_andrews(normalize(iris))
 order_andrews <- function(x, method=1) {
+  x <- normalize(x, 0)
   if (method==1) o <- apply(x, 2, IQR, na.rm=TRUE)
   if (method==2) o <- apply(x, 2, function(v) { max((v-median(v, na.rm=TRUE)))/IQR(v, na.rm=TRUE)})
   if (method==3) {
