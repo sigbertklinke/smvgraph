@@ -34,6 +34,9 @@ schernoff <- function(data, xvar=character(0), ...) {
   maxmin <- rbind(apply(data, 2, max), apply(data, 2, min))
   hc     <- hclust(dist(data), method="ward.D2")
   #
+  oldpar <- par(no.readonly = TRUE)
+  on.exit(par(oldpar))
+  #
   shinyApp(
     ui = dashboardPage(
       dashboardHeader(title="Chernoff faces"),
