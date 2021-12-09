@@ -9,7 +9,7 @@ table2dataframe(tab, ...)
 \arguments{
 \item{tab}{table: contingency table}
 
-\item{...}{further parameters given to \code{\link[base:table]{base::as.data.frame.table()}}}
+\item{...}{further parameters given to \link[base:table]{base::as.data.frame.table}}
 }
 \value{
 a data frame with \code{sum(tab)} rows and \code{length(dim(tab))} cols

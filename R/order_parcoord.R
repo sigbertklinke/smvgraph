@@ -6,7 +6,7 @@
 #'
 #' @param x data matrix
 #' @param method numeric: order method (default: \code{"spearman"})
-#' @param ... further parameters given to [stats::cor()] 
+#' @param ... further parameters given to [stats::cor] 
 #'
 #' @md
 #' @return order of column vectors

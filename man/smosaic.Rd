@@ -13,7 +13,7 @@ smosaic(data, xvar = character(0), yvar = character(0), ...)
 
 \item{yvar}{character: names of selected variables for y-axis}
 
-\item{...}{further parameters given to \code{\link[graphics:mosaicplot]{graphics::mosaicplot()}}}
+\item{...}{further parameters given to \link[graphics:mosaicplot]{graphics::mosaicplot}}
 }
 \value{
 nothing

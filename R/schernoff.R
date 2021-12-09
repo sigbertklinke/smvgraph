@@ -4,7 +4,7 @@
 #'
 #' @param data matrix or data.frame
 #' @param xvar character: names of selected variables for the plot
-#' @param ... further parameters given to [DescTools::PlotFaces()]
+#' @param ... further parameters given to [DescTools::PlotFaces]
 #'
 #' @md
 #' @return nothing
@@ -17,18 +17,9 @@
 #' @examples
 #' if (interactive()) schernoff(normalize(iris))
 schernoff <- function(data, xvar=character(0), ...) {
-  main         <- paste(deparse(substitute(data), 500), collapse = "\n")
-  if (is.data.frame(data)) data <- as.matrix(data[,sapply(data, is.numeric)])
-  stopifnot("matrix" %in% class(data))
-  if (is.null(colnames(data))) colnames(data) <- sprintf("%s[,%.0f]", main, 1:ncol(data))
-  dvar <- dimnames(data)[[2]]
-  if (length(xvar)) {
-    xvar <- xvar[xvar %in% dvar]
-    dvar <- setdiff(dvar, xvar)
-  } else {
-    xvar <- order_andrews(data)
-    dvar <- NULL
-  }
+  main <- paste(deparse(substitute(data), 500), collapse = "\n")
+  data <- prepare_data(data, main)
+  #
   choices <- as.list(1:10)
   names(choices) <- sprintf("%.0fx%.0f", 1:10, 1:10)
   maxmin <- rbind(apply(data, 2, max), apply(data, 2, min))
@@ -41,23 +32,8 @@ schernoff <- function(data, xvar=character(0), ...) {
     ui = dashboardPage(
       dashboardHeader(title="Chernoff faces"),
       dashboardSidebar(
-        tags$style( HTML(".black-text .rank-list-item { color: #000000; }")),
-        bucket_list(
-          header = NULL,
-          group_name = "bucket_var_group",
-          orientation = "vertical",
-          class = c("default-sortable", "black-text"),
-          add_rank_list(
-            text = "Variable(s)",
-            labels = dvar,
-            input_id = "dvar"
-          ),
-          add_rank_list(
-            text = "Selected variable(s)",
-            labels = xvar,
-            input_id = "xvar"
-          )
-        )
+        tags_style(),
+        variable_bucket_list(data, xvar)
       ),
       dashboardBody(
         fluidRow(

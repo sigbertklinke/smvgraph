@@ -11,7 +11,7 @@ sandrews(data, xvar = character(0), ...)
 
 \item{xvar}{character: names of selected variables for the plot}
 
-\item{...}{further parameters given to \code{\link[=andrews]{andrews()}}}
+\item{...}{further parameters given to \link{andrews}}
 }
 \value{
 nothing

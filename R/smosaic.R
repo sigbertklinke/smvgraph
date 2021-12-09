@@ -5,7 +5,7 @@
 #' @param data table or data.frame
 #' @param xvar character: names of selected variables for x-axis
 #' @param yvar character: names of selected variables for y-axis
-#' @param ... further parameters given to [graphics::mosaicplot()]
+#' @param ... further parameters given to [graphics::mosaicplot]
 #'
 #' @md
 #' @return nothing
@@ -49,7 +49,7 @@ smosaic <- function(data, xvar=character(0), yvar=character(0), ...) {
     ui = dashboardPage(
       dashboardHeader(title="Mosaicplot"),
       dashboardSidebar(
-        tags$style( HTML(".black-text .rank-list-item { color: #000000; }")),
+        tags_style(),
         bucket_list(
           header = NULL,
           group_name = "bucket_var_group",

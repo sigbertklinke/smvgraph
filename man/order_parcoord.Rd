@@ -11,7 +11,7 @@ order_parcoord(x, method = "spearman", ...)
 
 \item{method}{numeric: order method (default: \code{"spearman"})}
 
-\item{...}{further parameters given to \code{\link[stats:cor]{stats::cor()}}}
+\item{...}{further parameters given to \link[stats:cor]{stats::cor}}
 }
 \value{
 order of column vectors

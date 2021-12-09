@@ -19,7 +19,7 @@ andrews(x, type = 1, step = 100, ..., normalize = 1, ymax = NA)
 
 \item{step}{smoothness of curves}
 
-\item{...}{further parameters given to \link[graphics:plot.default]{graphics::plot} and \code{\link[graphics:lines]{graphics::lines()}}}
+\item{...}{further parameters given to \link[graphics:plot.default]{graphics::plot} and \link[graphics:lines]{graphics::lines}}
 
 \item{normalize}{integer: normalization method (default: \code{1})
 \itemize{

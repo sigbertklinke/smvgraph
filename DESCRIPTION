@@ -1,13 +1,15 @@
 Package: smvgraph
 Type: Package
-Title: Various Multivariate Graphics with Variable Choice in Shiny Apps
-Version: 0.1.2
-Date: 2021-11-08
+Title: Visualization and Clustering of Multivariate Data in Shiny Apps
+Version: 0.1.3
+Date: 2021-12-09
 Authors@R: 
   person("Sigbert", "Klinke", email="sigbert@hu-berlin.de", role=c("aut", "cre"))
-Description: Mosaic diagram, scatterplot matrix, Andrews curves, parallel coordinate diagram, radar diagram, 
-   and Chernoff plots as a Shiny app, which allow the order of variables to be changed interactively. 
-   The apps are intended as teaching examples.
+Description: Various visualisations (mosaic diagram, scatterplot matrix, Andrews curves, 
+    parallel coordinate diagram, radar diagram, and Chernoff plots) and clustering methods 
+    (k-means, agglomerative, EM clustering and DBSCAN) are implemented as Shiny apps. 
+    All apps allow interactive changes, e.g. of the order of variables. 
+    The apps are intended as teaching examples.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
@@ -17,5 +19,7 @@ Imports:
     DescTools,
     shiny,
     shinydashboard,
-    sortable
+    sortable,
+    dbscan,
+    mclust
 RoxygenNote: 7.1.1

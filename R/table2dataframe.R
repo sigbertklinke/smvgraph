@@ -3,7 +3,7 @@
 #' Converts a table to a full data frame.
 #'
 #' @param tab table: contingency table
-#' @param ...  further parameters given to [base::as.data.frame.table()]
+#' @param ...  further parameters given to [base::as.data.frame.table]
 #'
 #' @md
 #' @return a data frame with `sum(tab)` rows and `length(dim(tab))` cols

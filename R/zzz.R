@@ -24,4 +24,11 @@ if (FALSE) {
   t <- Titanic
   dimnames(t) <- NULL
   smosaic(t)
+  #
+  sdistance(iris)
+  #
+  sdbscan(iris)
+  shclust(iris)
+  skmeans(iris)
+  smclust(iris)
 }

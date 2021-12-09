@@ -12,7 +12,7 @@
 #' * 3: \eqn{f(t)=x1*cos(t)+x2*cos((2*t)^0.5)+x3*cos((3*t)^0.5)+...}
 #' * 4: \eqn{f(t)=1/(2^0.5)*(x1+x2*(sin(t)+cos(t))+x3*(sin(t)-cos(t))+x4*(sin(2*t)+cos(2*t))+x5*(sin(2*t)-cos(2*t))+...)}
 #' @param step smoothness of curves
-#' @param ... further parameters given to [graphics::plot] and [graphics::lines()]
+#' @param ... further parameters given to [graphics::plot] and [graphics::lines]
 #' @param normalize integer: normalization method (default: \code{1})
 #' * 0: no rescaling
 #' * 1: \eqn{(x-min(x))/(max(x)-min(x))}

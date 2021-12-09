@@ -11,7 +11,7 @@ sparcoord(data, xvar = character(0), ...)
 
 \item{xvar}{character: names of selected variables for the plot}
 
-\item{...}{further parameters given to \code{\link[MASS:parcoord]{MASS::parcoord()}}}
+\item{...}{further parameters given to \link[MASS:parcoord]{MASS::parcoord}}
 }
 \value{
 nothing

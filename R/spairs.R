@@ -4,7 +4,7 @@
 #'
 #' @param data matrix or data.frame
 #' @param xvar character: names of selected variables for the plot
-#' @param ... further parameters given to [graphics::pairs()]
+#' @param ... further parameters given to [graphics::pairs]
 #'
 #' @md
 #' @return nothing
@@ -17,40 +17,15 @@
 #' @examples
 #' if (interactive()) spairs(iris, col=as.factor(iris$Species))
 spairs <- function(data, xvar=character(0), ...) {
-  main         <- paste(deparse(substitute(data), 500), collapse = "\n")
-  if (is.data.frame(data)) data <- as.matrix(data[,sapply(data, is.numeric)])
-  stopifnot("matrix" %in% class(data))
-  if (is.null(colnames(data))) colnames(data) <- sprintf("%s[,%.0f]", main, 1:ncol(data))
-  dvar <- dimnames(data)[[2]]
-  if (length(xvar)) {
-    xvar <- xvar[xvar %in% dvar]
-    dvar <- setdiff(dvar, xvar)
-  } else {
-    xvar <- dvar
-    dvar <- NULL
-  }
+  main <- paste(deparse(substitute(data), 500), collapse = "\n")
+  data <- prepare_data(data, main)
   #
   shinyApp(
     ui = dashboardPage(
       dashboardHeader(title="Scatterplot matrix"),
       dashboardSidebar(
-        tags$style( HTML(".black-text .rank-list-item { color: #000000; }")),
-        bucket_list(
-          header = NULL,
-          group_name = "bucket_var_group",
-          orientation = "vertical",
-          class = c("default-sortable", "black-text"),
-          add_rank_list(
-            text = "Variable(s)",
-            labels = dvar,
-            input_id = "dvar"
-          ),
-          add_rank_list(
-            text = "Selected variable(s)",
-            labels = xvar,
-            input_id = "xvar"
-          )
-        )
+        tags_style(),
+        variable_bucket_list(data, xvar)
       ),
       dashboardBody(
         fluidRow(

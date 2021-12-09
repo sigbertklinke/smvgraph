@@ -11,7 +11,7 @@ spairs(data, xvar = character(0), ...)
 
 \item{xvar}{character: names of selected variables for the plot}
 
-\item{...}{further parameters given to \code{\link[graphics:pairs]{graphics::pairs()}}}
+\item{...}{further parameters given to \link[graphics:pairs]{graphics::pairs}}
 }
 \value{
 nothing
