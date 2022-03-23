@@ -20,5 +20,5 @@ nothing
 Shiny app for creating radar charts with interactive variable selection.
 }
 \examples{
-if (interactive()) sradar(normalize(iris))
+if (interactive()) sradar(iris)
 }

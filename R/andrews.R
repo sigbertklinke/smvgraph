@@ -4,7 +4,8 @@
 #' \code{step} determines the number of line segments for each curve.
 #' If \code{ymax==NA} then the maximum y coordinate will be determined from the curves.
 #' Note that for \code{type==3} the x range is \eqn{[0, 4*pi]} otherwise \eqn{[-pi, pi]}.
-#'
+#' Observations containing `NA`, `Nan`, `-Inf`, or `+Inf` will be deleted before plotting
+#' 
 #' @param x data frame or matrix
 #' @param type type of curve (default: \code{1})
 #' * 1: \eqn{f(t)=x1/(2^0.5)+x2*sin(t)+x3*cos(t)+x4*sin(2*t)+x5*cos(2*t)+...}
@@ -79,6 +80,10 @@ andrews <- function(x, type=1, step=100, ..., normalize=1, ymax=NA) {
     }
   }
   #
+  stopifnot(isTRUE(ncol(x)>1))
+  keep <- is.finite(rowSums(x))
+  x  <- x[keep,]
+  #
   t  <- if (type==3) seq(0, 4*pi, length.out=step+1) else seq(-pi, pi, length.out=step+1)
   x  <- normalize(x, method=normalize)
   xt <- NULL
@@ -96,6 +101,7 @@ andrews <- function(x, type=1, step=100, ..., normalize=1, ymax=NA) {
   args$type <- "n"
   if (is.null(args$xlab)) args$xlab <- ""
   if (is.null(args$ylab)) args$ylab <- ""
+  if (!is.null(args$col)) args$col <- args$col[keep]
   do.call(plot, args)
 #  args <- list(...)
   for (i in 1:nrow(x)) {

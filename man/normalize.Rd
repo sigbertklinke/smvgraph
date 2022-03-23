@@ -21,6 +21,8 @@ numeric matrix
 }
 \description{
 Extracts the numeric vectors from a data frame and normalizes each vector.
+Note: In case that a variable is constant for \code{method==1} (minmax) the entries will be replaced by \code{0.5} and
+for \code{method==2} (standardization) the entries will be replaced by \code{0}.
 }
 \examples{
 normalize(iris, 2)

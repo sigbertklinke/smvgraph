@@ -4,14 +4,12 @@
 \alias{sdistance}
 \title{sdistance}
 \usage{
-sdistance(data, xvar = character(0), colpal = rainbow, ...)
+sdistance(data, xvar = character(0), ...)
 }
 \arguments{
 \item{data}{matrix or data.frame}
 
 \item{xvar}{character: names of selected variables for the plot}
-
-\item{colpal}{color palette (default: \link[grDevices:palettes]{grDevices::rainbow})}
 
 \item{...}{unused}
 }
@@ -35,5 +33,5 @@ and \eqn{j} in variable \eqn{k} then the contribution is computed:
 }
 }
 \examples{
-if (interactive()) sdistance(iris, col=rainbow)
+if (interactive()) sdistance(iris)
 }

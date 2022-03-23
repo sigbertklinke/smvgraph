@@ -20,5 +20,5 @@ nothing
 Shiny app for creating a Parallel Coordinate plot with interactive variable selection.
 }
 \examples{
-if (interactive()) sparcoord(iris, col=as.factor(iris$Species))
+if (interactive()) sparcoord(iris)
 }

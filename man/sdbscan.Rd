@@ -4,18 +4,14 @@
 \alias{sdbscan}
 \title{sdbscan}
 \usage{
-sdbscan(data, xvar = character(0), colpal = rainbow, ..., maxdist = NA)
+sdbscan(data, xvar = character(0), ...)
 }
 \arguments{
 \item{data}{matrix or data.frame}
 
 \item{xvar}{character: names of selected variables for the clustering}
 
-\item{colpal}{color palette (default: \link[grDevices:palettes]{grDevices::rainbow})}
-
 \item{...}{further parameters given to \link[dbscan:dbscan]{dbscan::dbscan}}
-
-\item{maxdist}{numeric: maximal core distance (default: \code{NA}). If the value is \code{NA} then \code{median(dist(data))} is used.}
 }
 \value{
 nothing
@@ -25,5 +21,5 @@ Shiny app which allows to run a cluster analysis with DBSCAN with interactive ch
 core distance, and minimal neighbours.
 }
 \examples{
-if (interactive()) sdbscan(iris, col=rainbow)
+if (interactive()) sdbscan(iris)
 }

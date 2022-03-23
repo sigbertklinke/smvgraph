@@ -4,14 +4,12 @@
 \alias{skmeans}
 \title{skmeans}
 \usage{
-skmeans(data, xvar = character(0), colpal = rainbow, ...)
+skmeans(data, xvar = character(0), ...)
 }
 \arguments{
 \item{data}{matrix or data.frame}
 
 \item{xvar}{character: names of selected variables for the clustering}
-
-\item{colpal}{color palette for cluster colors (default: \link[grDevices:palettes]{grDevices::rainbow})}
 
 \item{...}{unused}
 }
@@ -22,5 +20,5 @@ nothing
 Shiny app which allows to run a k-means cluster analysis with interactive choice of variables.
 }
 \examples{
-if (interactive()) skmeans(iris, col=rainbow)
+if (interactive()) skmeans(iris)
 }

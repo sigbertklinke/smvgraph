@@ -1,6 +1,8 @@
 #' normalize
 #'
-#' Extracts the numeric vectors from a data frame and normalizes each vector.
+#' Extracts the numeric vectors from a data frame and normalizes each vector. 
+#' Note: In case that a variable is constant for `method==1` (minmax) the entries will be replaced by `0.5` and  
+#' for `method==2` (standardization) the entries will be replaced by `0`.
 #'
 #' @param x data.frame or matrix
 #' @param method integer: normalization method (default: \code{1})
@@ -23,7 +25,11 @@ normalize <- function(x, method=1) {
     mi <- apply(x, 2, min, na.rm=TRUE)
     ma <- apply(x, 2, max, na.rm=TRUE)
     x  <- scale(x, center=mi, scale=ma-mi)
+    x[is.na(x)] <- 0.5
   }
-  if (method==2) x <- scale(x)
+  if (method==2) {
+    x <- scale(x)
+    x[is.na(x)] <- 0
+  }
   x
 }

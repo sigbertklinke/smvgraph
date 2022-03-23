@@ -18,7 +18,7 @@ if (FALSE) {
   sradar(m)
   #
   smosaic(Titanic)
-  smosaic(table2dataframe(Titanic))
+  smosaic(toDataframe(Titanic))
   m <- matrix(sample(1:6, size=36, replace = TRUE), ncol=4)
   smosaic(m)
   t <- Titanic

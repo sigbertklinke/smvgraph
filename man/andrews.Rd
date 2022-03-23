@@ -38,6 +38,7 @@ Andrews curves for visualization of multidimensional data.
 \code{step} determines the number of line segments for each curve.
 If \code{ymax==NA} then the maximum y coordinate will be determined from the curves.
 Note that for \code{type==3} the x range is \eqn{[0, 4*pi]} otherwise \eqn{[-pi, pi]}.
+Observations containing \code{NA}, \code{Nan}, \code{-Inf}, or \code{+Inf} will be deleted before plotting
 }
 \examples{
 andrews(iris[,-5], col=as.factor(iris[,5]))

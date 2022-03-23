@@ -15,43 +15,16 @@
 #' @export
 #'
 #' @examples
-#' if (interactive()) spairs(iris, col=as.factor(iris$Species))
+#' if (interactive()) spairs(iris)
 spairs <- function(data, xvar=character(0), ...) {
   main <- paste(deparse(substitute(data), 500), collapse = "\n")
-  data <- prepare_data(data, main)
-  #
-  shinyApp(
-    ui = dashboardPage(
-      dashboardHeader(title="Scatterplot matrix"),
-      dashboardSidebar(
-        tags_style(),
-        variable_bucket_list(data, xvar)
-      ),
-      dashboardBody(
-        fluidRow(
-          box(plotOutput("plot")),
-          box(verbatimTextOutput("command"), title="Basic R code")
-      ))
-    ),
-    server = function(input, output, session) {
-      output$plot <- renderPlot({
-        if ((length(input$xvar)>1)) {
-          #browser()
-          args     <- list(...)
-          args$x   <- data[,input$xvar]
-          if (is.null(args$main)) args$main <- main
-          do.call("pairs", args)
-        }
-      })
-
-      output$command <- renderText({
-        txt <- "At least two variables are required for a plot!"
-        if (length(input$xvar)>1) {
-          txt <- c(paste0(" x <- c(", paste0('"', input$xvar, '"', collapse=", "), ")\n"),
-                   sprintf("pairs(%s[,x])\n", main))
-        }
-        txt
-      })
-    }
-  )
+  if (length(xvar)==0) xvar <- names(data)[sapply(data, class) %in% c("integer", "numeric")] 
+  xvar <- intersect(xvar, names(data))
+  shinyOptions('smvgraph.param'=list(file=toRDS(data), analysis=xvar, plotmodule="splom_pairs"))
+  # 
+  oldpar <- graphics::par(no.readonly = TRUE)
+  on.exit(resetpar(oldpar))
+  pkgs <- checkPackages()
+  if (!all(pkgs)) stop(sprintf("Package '%s' not installed", names(pkgs)[!pkgs]))
+  source(system.file("app", "app.R", package = "smvgraph"), local = TRUE, chdir = TRUE)$value
 }

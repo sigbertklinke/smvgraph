@@ -11,11 +11,14 @@ variable_bucket_list(data, xvar, fun = NULL)
 
 \item{xvar}{character: names of variables to use}
 
-\item{fun}{function: for returning a list of variable names (default: `NULL`)}
+\item{fun}{function: for returning a list of variable names (default: \code{NULL})}
 }
 \value{
 character with variable names
 }
 \description{
-Creates a `bucket_list` for a variable choice in Shiny app.
+Creates a \code{bucket_list} for a variable choice in Shiny app.
+}
+\examples{
+# none yet
 }

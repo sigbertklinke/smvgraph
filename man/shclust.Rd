@@ -4,18 +4,14 @@
 \alias{shclust}
 \title{shclust}
 \usage{
-shclust(data, xvar = character(0), colpal = rainbow, ..., color = "black")
+shclust(data, xvar = character(0), ...)
 }
 \arguments{
 \item{data}{matrix or data.frame}
 
 \item{xvar}{character: names of selected variables for the clustering}
 
-\item{colpal}{color palette for cluster colors (default: \link[grDevices:palettes]{grDevices::rainbow})}
-
 \item{...}{unused}
-
-\item{color}{color: used for dendrogram (default: \code{"black"})}
 }
 \value{
 nothing
@@ -25,5 +21,5 @@ Shiny app which allows to run a hierarchical cluster analysis with interactive c
 distance, and agglomeration method.
 }
 \examples{
-if (interactive()) shclust(iris, col=rainbow)
+if (interactive()) shclust(iris)
 }

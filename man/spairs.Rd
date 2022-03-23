@@ -20,5 +20,5 @@ nothing
 Shiny app for creating a scatterplot matrix with interactive variable selection.
 }
 \examples{
-if (interactive()) spairs(iris, col=as.factor(iris$Species))
+if (interactive()) spairs(iris)
 }

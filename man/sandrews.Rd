@@ -7,11 +7,11 @@
 sandrews(data, xvar = character(0), ...)
 }
 \arguments{
-\item{data}{matrix or data.frame}
+\item{data}{matrix or data frame}
 
 \item{xvar}{character: names of selected variables for the plot}
 
-\item{...}{further parameters given to \link{andrews}}
+\item{...}{unused}
 }
 \value{
 nothing

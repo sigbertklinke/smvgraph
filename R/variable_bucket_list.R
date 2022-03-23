@@ -10,6 +10,7 @@
 #' @export
 #'
 #' @examples
+#' # none yet
 variable_bucket_list <- function(data, xvar, fun=NULL) {
   dvar <- dimnames(data)[[2]]
   if (length(xvar)) {

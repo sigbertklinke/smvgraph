@@ -23,6 +23,6 @@ Shiny app for creating a Mosaic plot with interactive variable selection.
 }
 \examples{
 if (interactive()) smosaic(Titanic)
-dfTitanic <- table2dataframe(Titanic)
+dfTitanic <- toDataframe(Titanic)
 if (interactive()) smosaic(dfTitanic)
 }
