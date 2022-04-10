@@ -8,6 +8,7 @@ smvgraph_env <- new.env()
 #' @inheritParams base::stop 
 #' @inheritParams base::warning 
 #' @inheritParams base::message
+#' @aliases stop warning message read_logs
 #'
 #' @return Nothing.
 #' @export

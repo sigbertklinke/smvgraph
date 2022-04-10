@@ -1,9 +1,10 @@
-module[["dotplot_lattice_lattice"]] <- list(
+module[["dotplot_lattice"]] <- list(
   label = "Dot plot (lattice)",
   help  = "lattice::panel.dotplot",
   usable = function(analysis, group, data, input) {
     (nrow(analysis)==1) && (nrow(group)>0)
   },
+  packages = c("lattice"),
   code = function(analysis, group, data, input) {
     formula <- sprintf("%s~%s", input$analysis_var[1], input$group_var[1])
     if (length(input$group_var)>1) 

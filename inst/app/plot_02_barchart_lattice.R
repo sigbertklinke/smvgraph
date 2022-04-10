@@ -4,6 +4,7 @@ module[["barchart_lattice"]] <- list(
   usable = function(analysis, group, data, input) {
     (nrow(analysis)>2) && (nrow(group)==0) && isTRUE(all(analysis$unique<13))
   },
+  packages = c("lattice"),
   code = function(analysis, group, data, input) {
     rn <- row.names(analysis)
     template("

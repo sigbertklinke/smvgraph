@@ -1,3 +1,11 @@
+module <- new.env()
+
+.onLoad <- function(libname, pkgname){
+  files  <- Sys.glob(file.path(system.file("app", package="smvgraph"), "plot_*.R"))
+  for (file in files) try(eval(parse(file)), silent=TRUE)
+}
+
+#
 if (FALSE) {
   library("smvgraph")
   sandrews(iris)

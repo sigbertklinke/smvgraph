@@ -22,16 +22,12 @@ Imports:
     shinydashboardPlus,
     DT,
     sortable,
-    base64enc,
-    MASS,
-    FNN,
-    dbscan,
-    fmsb,
-    mclust
+    base64enc
 RoxygenNote: 7.1.2
 Roxygen: list(markdown = TRUE)
 Suggests: 
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    MASS
 Config/testthat/edition: 3
 Depends: 
     R (>= 2.10)

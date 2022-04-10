@@ -1,6 +1,7 @@
-module[["stripplot_lattice_lattice_lattice"]] <- list(
+module[["stripplot_lattice"]] <- list(
   label = "Strip chart (lattice)",
   help  = "lattice::panel.stripplot_lattice",
+  packages = c("lattice"),
   usable = function(analysis, group, data, input) {
     (nrow(analysis)==1) && (nrow(group)>0)
   },

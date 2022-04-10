@@ -4,6 +4,7 @@ module[["histogram_default"]] <- list(
   usable = function(analysis, group, data, input) {
     (nrow(analysis)==1) && (nrow(group)==0) 
   },
+  packages = c("lattice"),
   code = function(analysis, group, data, input) {
     template("
 0:      x     <- numeric_data({{x}}, out='vector')

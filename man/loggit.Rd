@@ -2,11 +2,11 @@
 % Please edit documentation in R/loggit.R
 \name{loggit}
 \alias{loggit}
+\alias{stop}
+\alias{warning}
+\alias{message}
 \alias{read_logs}
 \alias{set_logfile}
-\alias{message}
-\alias{warning}
-\alias{stop}
 \title{loggit}
 \usage{
 loggit(log_lvl, log_msg)

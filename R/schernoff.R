@@ -16,13 +16,14 @@
 #' @examples
 #' if (interactive()) schernoff(normalize(iris))
 schernoff <- function(data, xvar=character(0), ...) {
-  main <- paste(deparse(substitute(data), 500), collapse = "\n")
+#  main <- paste(deparse(substitute(data), 500), collapse = "\n")
   xvar <- if (length(xvar)==0) names(data)[sapply(data, class) %in% c("integer", "numeric")] else intersect(xvar, names(data))
-  shinyOptions('smvgraph.param'=list(file=toRDS(data), analysis=xvar, plotmodule="faces_aplpack"))
+  if (length(xvar)<3) stop("At least three variables required")  
   # 
   oldpar <- graphics::par(no.readonly = TRUE)
   on.exit(resetpar(oldpar))
-  pkgs <- checkPackages('aplpack')
+  pkgs <- checkPackages(plotmodule="faces_aplpack")
   if (!all(pkgs)) stop(sprintf("Package '%s' not installed", names(pkgs)[!pkgs]))
+  shinyOptions('smvgraph.param'=list(file=toRDS(data), analysis=xvar, plotmodule="faces_aplpack"))
   source(system.file("app", "app.R", package = "smvgraph"), local = TRUE, chdir = TRUE)$value
 }

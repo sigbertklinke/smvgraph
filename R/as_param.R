@@ -1,5 +1,6 @@
 #' @rdname as_param
 #' @title as_param
+#' @aliases txt
 #' @description Create a parameter list or a function call. For a function call `fun` must be explicitly given.
 #' @param ... list of named and unnamed parameters
 #' @param fun character: 

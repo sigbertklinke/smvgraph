@@ -1,6 +1,7 @@
 library("tools")
 d <- packageVersion("smvgraph")
 
+library("htmltools")
 library("smvgraph")
 data <- data.frame(A1=runif(10), A2=runif(10), A3=runif(10), A4=runif(10),# A5=runif(10),
                    G1=sample(2, 10, T), G2=sample(2, 10, T), G3=sample(2, 10, T), G4=sample(2, 10, T))#, G5=sample(2, 10, T))
@@ -21,6 +22,21 @@ for (ai in 0:4) {
   }
 }
 plots[2,1] <- list(c(plots[[2,1]], "Time series"))
+
+pkgs <- NULL
+for (i in seq_along(plotmodule)) pkgs <- c(pkgs, plotmodule[[i]]$packages)
+pkgs <- c(pkgs, "smvgraph", "graphics")
+pkgs <- sort(basename(unique(pkgs)))
+authors <- c('<table width="100%"><caption style="text-align:center"><h2>Plots and algorithms used from</h2></caption>', 
+             '<tr><th style="background-color:grey;">Package</th><th style="background-color:grey;">Author(s)</th></tr>')
+for (i in seq_along(pkgs)) {
+  bgcolor <- if(i%%2) "white" else "lightgrey" 
+  pdesc   <- packageDescription(pkgs[i])
+  authi   <- htmlEscape(gsub("\n", "", pdesc$Author, fixed=TRUE))
+  authors <- c(authors, paste0('<tr style="vertical-align:top;background-color:', bgcolor, '"><td><a href="https://CRAN.R-project.org/package=', pkgs[i], '">', pkgs[i], "</a></td><td>", 
+                               authi, "</td></tr>"))
+}
+authors <- c(authors, "</table>")
 
 labels <- unique(sapply(plotmodule, function(e) { e$label }))
 setdiff(labels, unique(unlist(plots)))
@@ -57,6 +73,6 @@ for (ai in 1:4) {
   }
   html <- paste0(html, hj, '</tr>')
 }
-html <- paste0(html, '<tr><td style="padding:5px" colspan="6"><b>Note: The availability of a plot depends on the required libraries (see "Info") and the number of unique values in a variable!</b></td></tr></table>')
+html <- paste0(html, '<tr><td style="padding:5px" colspan="6"><b>Note: The availability of a plot depends on the required libraries (see "Log") and the number of unique values in a variable!</b></td></tr></table>')
 
-writeLines(html, "www/toc.html")
+writeLines(c(html, authors), "www/toc.html")

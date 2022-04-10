@@ -1,5 +1,7 @@
 #' @rdname UI
 #' @title General UI elements
+#' @aliases UIdatanormalization UIdistance UIobservations UImergegroups UIpointsize UIpointsymbol UIlinewidth UIlinetype UItextsize 
+#' @aliases UIlegend UIlegendsize UIplottype
 #' @description Some general UI elements for common use where last selected value is stored for reuse:
 #' * `UIplottype` plot type, defines `smvgraph_type`
 #' * `UIpointsymbol` plot symbol for point, defines `smvgraph_pch`

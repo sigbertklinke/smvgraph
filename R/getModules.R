@@ -15,7 +15,7 @@
 getModules <- function(pattern, path=getShinyOption("smvgraph.path")) {
   # load plots
   #browser()
-  module <- list()
+  module   <- list()
   if (is.null(path)) path <- system.file("app", package="smvgraph")
   files    <- Sys.glob(file.path(path, pattern))
   files    <- files[order(tools::file_path_sans_ext(files))]
@@ -31,8 +31,10 @@ getModules <- function(pattern, path=getShinyOption("smvgraph.path")) {
     npts <- setdiff(names(module), old)
     for (i in seq_along(npts)) {
       last <- length(listofplot$msg)
+      pkgs <- module[[npts[i]]]$packages
       msg  <- NA_character_
-      pkgs <- sapply(module[[npts[i]]]$packages, require,  quietly=TRUE, character.only = TRUE)
+      if (!is.null(pkgs)) pkgs <- basename(pkgs)
+      pkgs <- sapply(pkgs, require,  quietly=TRUE, character.only = TRUE)
       if(!all(pkgs)) msg <- sprintf("missing packages: %s", paste0(names(pkgs)[!pkgs], collapse=","))
       listofplot[nrow(listofplot)+1,] <- list(file=file, type=npts[i], msg=msg) 
     }  

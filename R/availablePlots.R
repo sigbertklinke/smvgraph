@@ -1,8 +1,12 @@
 #' availablePlots 
 #'
-#' Returns a data frame with three columns about all available plots in `smvgraph`:
-#' * `plottype`: the internal name used. If you want to call the Shiny app then you might need this.
+#' Returns a data frame with columns about the available plots in `smvgraph`:
+#' * `module`: the internal name used. If you want to call the Shiny app then you might need this.
 #' * `label`: the label used in the Shiny app 
+#' * `help`: the R help topic for the plot
+#' * `packages`: packages which are required to make the plot
+#' * `code`: if code block exists, should always be `TRUE`
+#' * `ui`: if plot specific interactive UI elements exists
 #' * `condition`: the condition when a plot is offered in the Shiny app to the user
 #' 
 #' To understand `condition`:
@@ -22,24 +26,21 @@
 #' @examples
 #' availablePlots()
 availablePlots <- function() {
-  browser()
-  module <- list()
-  files <- Sys.glob(file.path(system.file("app", package="smvgraph"), "plot_*.R"))
-  for (file in files) try(eval(parse(file)), silent=TRUE)
-  retc <- rep(NA_character_,length(module))
-  retl <- rep(NA,length(module))  
-  ret <- data.frame(module=names(module), label=retc,
-                    label.exists=retl, help.exists=retl, packages.exists=retl, usable.exists=retl,
-                    code.exists=retl, ui.exists=retl,  condition=retc)
+  retc <- rep(NA_character_, length(module))
+  retl <- rep(NA, length(module))  
+  ret <- data.frame(module=names(module), label=retc, help=retc, packages=retc, 
+                    code=retl, ui=retl, condition=retc)
   for (i in seq_along(module)) {
-    ret$label[i]           <- module[[i]]$label
-    ret$condition[i]       <- paste0(as.character(body(module[[i]]$usable))[-1], collapse=" ")
-    ret$label.exists[i]    <- !is.null(module[[i]]$label)
-    ret$help.exists[i]     <- !is.null(module[[i]]$help)
-    ret$packages.exists[i] <- !is.null(module[[i]]$packages)
-    ret$usable.exists[i]   <- !is.null(module[[i]]$usable)
-    ret$code.exists[i]     <- !is.null(module[[i]]$code)
-    ret$ui.exists[i]       <- !is.null(module[[i]]$ui)
+    ret$condition[i] <- paste0(as.character(body(module[[ret$module[i]]]$usable))[-1], collapse=" ")
+    ret$label[i]     <- toString(module[[ret$module[i]]]$label)
+    ret$help[i]      <- toString(module[[ret$module[i]]]$help)
+    ret$packages[i]  <- toString(module[[ret$module[i]]]$packages)
+    ret$code[i]      <- !is.null(module[[ret$module[i]]]$code)
+    ret$ui[i]        <- !is.null(module[[ret$module[i]]]$ui)
   }
   ret
+}
+
+installPlots <- function() {
+  
 }

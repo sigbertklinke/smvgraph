@@ -1,10 +1,11 @@
 module[["scatterplot_lattice"]] <- list(
   label = "Scatter plot (lattice)",
-  help  = "lattice::B_00_xyplot ",
+  help  = "lattice::B_00_xyplot",
   packages = "lattice",
   usable = function(analysis, group, data, input) {
     (nrow(analysis)==2) && (nrow(group>0)) && (prod(group$unique)<43)
   },
+  packages = c("lattice"),
   code = function(analysis, group, data, input) {
     template("
              0:   library('lattice')

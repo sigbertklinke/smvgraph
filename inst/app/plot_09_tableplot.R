@@ -1,7 +1,7 @@
 module[["tableplot"]] <- list(
   label = "Table plot",
   help  = "tabplot::tableplot",
-  packages = "tabplot",
+  packages = "mtennekes/tabplot",
   usable = function(analysis, group, data, input) {
      (nrow(analysis)>1) && (nrow(group)==0) 
   },

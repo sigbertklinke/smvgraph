@@ -10,10 +10,14 @@ availablePlots()
 a data frame with information about all available plots
 }
 \description{
-Returns a data frame with three columns about all available plots in \code{smvgraph}:
+Returns a data frame with columns about the available plots in \code{smvgraph}:
 \itemize{
-\item \code{plottype}: the internal name used. If you want to call the Shiny app then you might need this.
+\item \code{module}: the internal name used. If you want to call the Shiny app then you might need this.
 \item \code{label}: the label used in the Shiny app
+\item \code{help}: the R help topic for the plot
+\item \code{packages}: packages which are required to make the plot
+\item \code{code}: if code block exists, should always be \code{TRUE}
+\item \code{ui}: if plot specific interactive UI elements exists
 \item \code{condition}: the condition when a plot is offered in the Shiny app to the user
 }
 }

@@ -1,6 +1,7 @@
 module[["histogram_lattice"]] <- list(
   label = "Histogram (lattice)",
   help  = "lattice::panel.histogram",
+  packages = c("lattice"),
   usable = function(analysis, group, data, input) {
     (nrow(analysis)==1) 
   },

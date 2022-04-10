@@ -2,16 +2,26 @@
 % Please edit documentation in R/checkPackages.R
 \name{checkPackages}
 \alias{checkPackages}
-\title{checkPackages}
+\alias{installPackages}
+\title{checkPackages, installPackages}
 \usage{
 checkPackages(
   ...,
+  plotmodule = NULL,
   add = c("highlight", "formatR", "shiny", "shinydashboard", "shinydashboardPlus",
-    "DT", "sortable")
+    "shinyWidgets", "DT", "sortable", "base64enc", "devtools")
+)
+
+installPackages(
+  plotmodule = NULL,
+  add = c("highlight", "formatR", "shiny", "shinydashboard", "shinydashboardPlus",
+    "shinyWidgets", "DT", "sortable", "base64enc", "devtools")
 )
 }
 \arguments{
 \item{...}{character: name(s) of package}
+
+\item{plotmodule}{character: name(s) of plot modules to check for packages}
 
 \item{add}{character: names of default packages to check (default: \code{c("highlight", "formatR", "shiny", "shinydashboard", "shinydashboardPlus", "DT")})}
 }
@@ -24,4 +34,5 @@ Checks if a package is installed without loading it. Returns a logical vector wi
 \examples{
 checkPackages("graphics", add=NULL)          # checks if 'graphics' is installed
 if (interactive()) checkPackages("graphics") # checks if 'graphics', 'shiny', ... are installed
+if (interactive()) installPackages()         # installs all packages to show ALL plots
 }

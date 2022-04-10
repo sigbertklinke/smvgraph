@@ -26,6 +26,7 @@ data <- if (is.null(args$file)) testdata else readRDS(args$file)
 if (is.table(data)) data <- toDataframe(data)
 if (is.ts(data)) data <- data.frame(xt=data)
 if (is.null(args$plotmodule)) args$plotmodule <- ''
+if (is.null(args$path)) args$path <- file_path_as_absolute('.')
 #if (is.null(args$analysis)) args$analysis <- names(data)[sapply(data, function(e){'numeric' %in% class(e)} )]
 analysis_vars <- intersect(names(data), args$analysis)
 unused_vars   <- setdiff(names(data), analysis_vars)
@@ -33,7 +34,7 @@ group_vars    <- NULL
 # browser()
 dvar        <- getVariableInfo(data)
 #infotxt <- c(sprintf("Package: smvgraph %s", utils::packageVersion("smvgraph")), "(C) 2022- Sigbert Klinke, HU Berlin", "")
-plotmodule  <- getModules('plot_*.R', path='.')
+plotmodule  <- getModules('plot_*.R', path=args$path)
 #infotxt   <- c(infotxt, attr(plotmodule, 'infotxt'))
 loggit("DEBUG", paste0(attr(plotmodule, 'infotxt'), collapse="\n"))
 #colormodule <- getModules('color_*.R', path='.')

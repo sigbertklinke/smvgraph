@@ -20,14 +20,15 @@
 #' dfTitanic <- toDataframe(Titanic)
 #' if (interactive()) smosaic(dfTitanic)
 smosaic <- function(data, xvar=character(0), yvar=character(0), ...) {
-  main <- paste(deparse(substitute(data), 500), collapse = "\n")
+  #main <- paste(deparse(substitute(data), 500), collapse = "\n")
   if (is.table(data)) data <- toDataframe(data)
   xvar <- if (length(xvar)==0) names(data)[!(sapply(data, class) %in% c("integer", "numeric"))] else intersect(xvar, names(data))
-  shinyOptions('smvgraph.param'=list(file=toRDS(data), analysis=xvar, plotmodule="mosaicplot"))
+  if (length(xvar)<2) stop("At least two variables required")
   # 
   oldpar <- graphics::par(no.readonly = TRUE)
   on.exit(resetpar(oldpar))
-  pkgs <- checkPackages()
+  pkgs <- checkPackages(plotmodule="mosaicplot")
   if (!all(pkgs)) stop(sprintf("Package '%s' not installed", names(pkgs)[!pkgs]))
+  shinyOptions('smvgraph.param'=list(file=toRDS(data), analysis=xvar, plotmodule="mosaicplot"))
   source(system.file("app", "app.R", package = "smvgraph"), local = TRUE, chdir = TRUE)$value
 }

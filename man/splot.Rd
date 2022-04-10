@@ -4,12 +4,14 @@
 \alias{splot}
 \title{splot}
 \usage{
-splot(data, xvar = character(0))
+splot(data, xvar = character(0), path = NULL)
 }
 \arguments{
 \item{data}{data.frame: input data}
 
 \item{xvar}{character: selected variables (default: \code{character(0)})}
+
+\item{path}{character: path where to read the plot modules (default: \code{NULL})}
 }
 \value{
 nothing

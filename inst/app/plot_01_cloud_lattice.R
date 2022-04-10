@@ -4,6 +4,7 @@ module[["cloud_lattice"]] <- list(
   usable = function(analysis, group, data, input) {
     (nrow(analysis)==3) && isTRUE(all(analysis$unique>1)) && isTRUE(all(group$unique<13)) 
   },
+  packages = c("lattice"),
   code = function(analysis, group, data, input) {
     formula <- sprintf("%s~%s+%s", input$analysis_var[1], input$analysis_var[2], input$analysis_var[3])
     if (length(input$group_var)>0) formula <- paste0(formula, "|", paste0(input$group_var, collapse="*"))
