@@ -5,7 +5,7 @@
 #'
 #' @param data matrix or data.frame
 #' @param xvar character: names of selected variables for the clustering
-#' @param ... further parameters given to [dbscan::dbscan]
+#' @param ... unused
 #'
 #' @md
 #' @return nothing

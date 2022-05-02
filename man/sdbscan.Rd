@@ -11,7 +11,7 @@ sdbscan(data, xvar = character(0), ...)
 
 \item{xvar}{character: names of selected variables for the clustering}
 
-\item{...}{further parameters given to \link[dbscan:dbscan]{dbscan::dbscan}}
+\item{...}{unused}
 }
 \value{
 nothing

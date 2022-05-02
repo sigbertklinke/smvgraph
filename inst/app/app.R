@@ -85,6 +85,7 @@ shinyApp(#options=list(launch.browser=TRUE),
                       .rank-list-item  { color: #000000; padding: 0px 5px !important; }
                       .rank-list-title { font-weight: bold; }
                       ")),
+             uiOutput("quit"),
              uiOutput("ranklist")
            ),
            controlbar = shinydashboardPlus::dashboardControlbar(collapsed = FALSE, overlay=TRUE,
@@ -130,7 +131,10 @@ shinyApp(#options=list(launch.browser=TRUE),
          ),
          server = function(input, output, session) {
            htmlfile <- tempfile()
-           onSessionEnded(function(){ unlink(htmlfile) })
+           session$onSessionEnded(function(){ 
+             unlink(htmlfile) 
+             stopApp()
+           })
            
 #           rv <- reactiveValues(analysis_vars, group_vars, unused_vars)
            
@@ -203,6 +207,10 @@ shinyApp(#options=list(launch.browser=TRUE),
            #    outputOptions(output, "colorUI", suspendWhenHidden = FALSE)
            
            # left side bar
+           output$quit <- renderUI({
+             HTML(paste0("<center>", actionButton("quit", "Quit"), "</center>"))
+           })
+           
            output$ranklist <- renderUI({
              if (!input$sidebarCollapsed) {
                bucket_list(
@@ -247,6 +255,10 @@ shinyApp(#options=list(launch.browser=TRUE),
                                    selected = sel)
                )
              }
+           })
+           
+           observeEvent(input$quit, {
+             session$close()
            })
            
            # panels

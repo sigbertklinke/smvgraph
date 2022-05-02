@@ -1,16 +1,15 @@
 module[["tableplot"]] <- list(
   label = "Table plot",
-  help  = "tabplot::tableplot",
-  packages = "mtennekes/tabplot",
+  help  = "smvgraph::tableplot",
+  packages = "smvgraph",
   usable = function(analysis, group, data, input) {
      (nrow(analysis)>1) && (nrow(group)==0) 
   },
   code = function(analysis, group, data, input) {
     rn <- row.names(analysis)
     template("
-    0: # devtools::install_github('mtennekes/tabplot')
-    0: library('tabplot')
-    0: tableplot({{dat}}, sortCol={{sortCol}}, decreasing={{decreasing}})
+    0: library('smvgraph')
+    0: tableplot({{dat}}, bin=sortbin({{dat}}, sortCol={{sortCol}}, decreasing={{decreasing}}))
              ",
              dat=sprintf("data[,c(%s)]", paste0("'", rn, "'", collapse=", ")),
              sortCol=getval(input$tableplot_sortcol, 1),

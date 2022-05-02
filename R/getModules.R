@@ -44,9 +44,13 @@ getModules <- function(pattern, path=getShinyOption("smvgraph.path")) {
   listofplot <- listofplot[order(listofplot$msg, listofplot$file, listofplot$type),]
   delplot    <- listofplot$type[!is.na(listofplot$msg) & !is.na(listofplot$type)]
   listofplot$msg[is.na(listofplot$msg)] <- "OK"
-  infotxt <- paste0(sprintf("%*s - ", -max(nchar(listofplot$file), na.rm=TRUE), listofplot$file),
+  # build infotxt
+  
+  infotxt <- c(sprintf("Path: %s", path),
+               paste0(sprintf("%*s - ", -max(nchar(basename(listofplot$file)), na.rm=TRUE), basename(listofplot$file)),
                             sprintf("%*s : ", -max(nchar(listofplot$type), na.rm=TRUE),  listofplot$type), 
                             listofplot$msg)
+  )
   for (i in seq_along(delplot)) module[[delplot[i]]] <- NULL
   structure(module, infotxt=infotxt)
 }

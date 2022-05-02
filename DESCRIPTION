@@ -19,10 +19,7 @@ Imports:
     highlight,
     shiny,
     shinydashboard,
-    shinydashboardPlus,
-    DT,
-    sortable,
-    base64enc
+    sortable
 RoxygenNote: 7.1.2
 Roxygen: list(markdown = TRUE)
 Suggests: 
