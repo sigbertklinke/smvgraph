@@ -17,9 +17,7 @@ Imports:
     devtools,
     formatR,
     highlight,
-    shiny,
-    shinydashboard,
-    sortable
+    shiny
 RoxygenNote: 7.1.2
 Roxygen: list(markdown = TRUE)
 Suggests: 

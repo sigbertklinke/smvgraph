@@ -10,8 +10,6 @@
 #' @md
 #' @return nothing
 #' @import shiny
-#' @import shinydashboard
-#' @import sortable
 #' @importFrom graphics mosaicplot
 #' @export
 #'

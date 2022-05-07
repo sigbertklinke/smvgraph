@@ -1,5 +1,6 @@
 #' splot
 suppressPackageStartupMessages({
+  library("smvgraph")
   library("tools")
   library("devtools")
   library("formatR")
@@ -11,7 +12,7 @@ suppressPackageStartupMessages({
   library("DT")
   library("sortable")
   library("base64enc")
-  library("smvgraph")
+
 })
 set_logfile()
 #msg <- paste0("Package: smvgraph ", utils::packageVersion("smvgraph"), ", (C) 2022- Sigbert Klinke, HU Berlin")

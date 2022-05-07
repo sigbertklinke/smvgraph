@@ -35,7 +35,7 @@ read_logs <- function() {
 #' @rdname loggit
 #' @export
 set_logfile <- function() {
-  smvgraph_env$logfile <- tempfile(pattern = "loggit", fileext = ".rds")
+  smvgraph_env$logfile <- tempfile(pattern = "loggit", fileext = ".rds", tmpdir = tempdir(TRUE))
   smvgraph_env$loglist <- list(log_time=Sys.time(), log_lvl="DEBUG", log_msg=sprintf("Created logfile %s", smvgraph_env$logfile))
 }
 

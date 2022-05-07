@@ -9,8 +9,6 @@
 #' @md
 #' @return nothing
 #' @import shiny
-#' @import shinydashboard
-#' @import sortable
 #' @export
 #'
 #' @examples

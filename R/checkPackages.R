@@ -15,7 +15,7 @@
 #' if (interactive()) checkPackages("graphics") # checks if 'graphics', 'shiny', ... are installed
 #' if (interactive()) installPackages()         # installs all packages to show ALL plots
 checkPackages <- function(..., plotmodule=NULL,
-                          add=c("highlight", "formatR", "shiny", "shinydashboard", "shinydashboardPlus", "shinyWidgets", "DT", "sortable", "base64enc", "devtools") 
+                          add=c("tools", "devtools",  "formatR", "highlight", "shiny", "shinydashboard", "shinydashboardPlus", "shinyWidgets", "DT", "sortable", "base64enc", ) 
                          ) {
   pkgs <- as.character(unlist(list(...)))
   if (length(add)) pkgs <- c(pkgs, as.character(add))
