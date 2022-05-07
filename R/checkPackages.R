@@ -41,12 +41,11 @@ checkPackages <- function(..., plotmodule=NULL,
 #' @export
 installPackages <- function(plotmodule=NULL, add=c("tools", "devtools",  "formatR", "highlight", "shiny", "shinydashboard", "shinydashboardPlus", "shinyWidgets", "DT", "sortable", "base64enc"))  {
   pkgs <- add
-  if (is.null(plotmodule)) {
-    pkgs <- c(pkgs, unlist(lapply(module, '[[', 'packages')))
-  } else {
+  if (!is.null(plotmodule)) {
     for (p in plotmodule) pkgs <- c(pkgs, module[[p]]$packages)
   }
   pkgs  <- unique(pkgs) 
+  if (interactive()) cat("Packages to install: ", paste0(pkgs, collapse=','), "\n   This may take a while....\n\n")
   bpkgs <- basename(pkgs)
   for (i in seq_along(bpkgs)) {
     if (!require(bpkgs[i], character.only = TRUE)) {
