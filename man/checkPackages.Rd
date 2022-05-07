@@ -9,7 +9,8 @@ checkPackages(
   ...,
   plotmodule = NULL,
   add = c("tools", "devtools", "formatR", "highlight", "shiny", "shinydashboard",
-    "shinydashboardPlus", "shinyWidgets", "DT", "sortable", "base64enc")
+    "shinydashboardPlus", "shinyWidgets", "DT", "sortable", "base64enc"),
+  error = FALSE
 )
 
 installPackages(
@@ -24,6 +25,8 @@ installPackages(
 \item{plotmodule}{character: name(s) of plot modules to check for packages}
 
 \item{add}{character: names of default packages to check (default: \code{c("highlight", "formatR", "shiny", "shinydashboard", "shinydashboardPlus", "DT")})}
+
+\item{error}{logical: should a error thrown if one or more package are missing? (default: \code{FALSE})}
 }
 \value{
 \code{TRUE} if successful otherweise an error will be thrown

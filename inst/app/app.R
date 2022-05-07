@@ -12,7 +12,6 @@ suppressPackageStartupMessages({
   library("DT")
   library("sortable")
   library("base64enc")
-
 })
 set_logfile()
 #msg <- paste0("Package: smvgraph ", utils::packageVersion("smvgraph"), ", (C) 2022- Sigbert Klinke, HU Berlin")

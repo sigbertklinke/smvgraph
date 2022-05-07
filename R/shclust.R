@@ -20,8 +20,7 @@ shclust <- function(data, xvar=character(0), ...) {
   # 
   oldpar <- graphics::par(no.readonly = TRUE)
   on.exit(resetpar(oldpar))
-  pkgs <- checkPackages(plotmodule="hclust_plot")
-  if (!all(pkgs)) stop(sprintf("Package '%s' not installed", names(pkgs)[!pkgs]))
+  checkPackages(plotmodule="hclust_plot", error=TRUE)
   shinyOptions('smvgraph.param'=list(file=toRDS(data), analysis=xvar, plotmodule="hclust_plot"))
   source(system.file("app", "app.R", package = "smvgraph"), local = TRUE, chdir = TRUE)$value
 }

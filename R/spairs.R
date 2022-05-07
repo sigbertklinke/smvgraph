@@ -21,8 +21,7 @@ spairs <- function(data, xvar=character(0), ...) {
   # 
   oldpar <- graphics::par(no.readonly = TRUE)
   on.exit(resetpar(oldpar))
-  pkgs <- checkPackages(plotmodule="splom_pairs")
-  if (!all(pkgs)) stop(sprintf("Package '%s' not installed", names(pkgs)[!pkgs]))
+  checkPackages(plotmodule="splom_pairs", error=TRUE)
   shinyOptions('smvgraph.param'=list(file=toRDS(data), analysis=xvar, plotmodule="splom_pairs"))
   source(system.file("app", "app.R", package = "smvgraph"), local = TRUE, chdir = TRUE)$value
 }

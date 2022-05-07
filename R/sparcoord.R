@@ -20,8 +20,7 @@ sparcoord <- function(data, xvar=character(0), ...) {
   # 
   oldpar <- graphics::par(no.readonly = TRUE)
   on.exit(resetpar(oldpar))
-  pkgs <- checkPackages(plotmodule='parcoord')
-  if (!all(pkgs)) stop(sprintf("Package '%s' not installed", names(pkgs)[!pkgs]))
+  checkPackages(plotmodule='parcoord', error=TRUE)
   shinyOptions('smvgraph.param'=list(file=toRDS(data), analysis=xvar, plotmodule="parcoord"))
   source(system.file("app", "app.R", package = "smvgraph"), local = TRUE, chdir = TRUE)$value
 }

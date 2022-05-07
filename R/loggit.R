@@ -19,6 +19,10 @@
 #'   read_logs()        # get a data frame with the current messages.
 #' }
 loggit <- function(log_lvl, log_msg) {
+  if (is.null(smvgraph_env$logfile)) {
+    set_logfile()
+    loggit('DEBUG', 'Logfile in loggit created')
+  }
   smvgraph_env$loglist$log_time <- c(smvgraph_env$loglist$log_time, Sys.time())
   smvgraph_env$loglist$log_lvl  <- c(smvgraph_env$loglist$log_lvl, log_lvl)
   smvgraph_env$loglist$log_msg  <- c(smvgraph_env$loglist$log_msg, log_msg)  
@@ -28,6 +32,10 @@ loggit <- function(log_lvl, log_msg) {
 #' @rdname loggit
 #' @export
 read_logs <- function() {
+  if (is.null(smvgraph_env$logfile)) {
+    set_logfile()
+    loggit('DEBUG', 'Logfile in read_logs created')
+  }
   as.data.frame(readRDS(smvgraph_env$logfile))
 }
 

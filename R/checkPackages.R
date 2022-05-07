@@ -6,6 +6,7 @@
 #' @param ... character: name(s) of package
 #' @param add character: names of default packages to check (default: \code{c("highlight", "formatR", "shiny", "shinydashboard", "shinydashboardPlus", "DT")})
 #' @param plotmodule character: name(s) of plot modules to check for packages 
+#' @param error logical: should a error thrown if one or more package are missing? (default: \code{FALSE})
 #'
 #' @return \code{TRUE} if successful otherweise an error will be thrown
 #' @export
@@ -15,7 +16,8 @@
 #' if (interactive()) checkPackages("graphics") # checks if 'graphics', 'shiny', ... are installed
 #' if (interactive()) installPackages()         # installs all packages to show ALL plots
 checkPackages <- function(..., plotmodule=NULL,
-                          add=c("tools", "devtools",  "formatR", "highlight", "shiny", "shinydashboard", "shinydashboardPlus", "shinyWidgets", "DT", "sortable", "base64enc") 
+                          add=c("tools", "devtools",  "formatR", "highlight", "shiny", "shinydashboard", "shinydashboardPlus", "shinyWidgets", "DT", "sortable", "base64enc"),
+                          error=FALSE
                          ) {
   pkgs <- as.character(unlist(list(...)))
   if (length(add)) pkgs <- c(pkgs, as.character(add))
@@ -26,6 +28,11 @@ checkPackages <- function(..., plotmodule=NULL,
   ret  <- structure(rep(NA, length(pkgs)), names=pkgs)
   for (pkg in pkgs) {
     ret[pkg] <- nzchar(system.file(package=pkg))
+  }
+  if(error && !all(ret)) {
+    msg <- sprintf("%i packages(s) are missing, please install with 'installPackages(%s)'", sum(!ret), 
+                   if (length(plotmodule)) paste0(sQuote(plotmodule), collapse=",") else "")
+    stop(msg)
   }
   ret
 }
