@@ -42,7 +42,7 @@ checkPackages <- function(..., plotmodule=NULL,
 installPackages <- function(plotmodule=NULL, add=c("tools", "devtools",  "formatR", "highlight", "shiny", "shinydashboard", "shinydashboardPlus", "shinyWidgets", "DT", "sortable", "base64enc"))  {
   pkgs <- add
   if (is.null(plotmodule)) {
-    pkgs <- c(pkgs, unlist(lapply(module, ']]', 'packages')))
+    pkgs <- c(pkgs, unlist(lapply(module, '[[', 'packages')))
   } else {
     for (p in plotmodule) pkgs <- c(pkgs, module[[p]]$packages)
   }
