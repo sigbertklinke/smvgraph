@@ -14,8 +14,8 @@ checkPackages(
 
 installPackages(
   plotmodule = NULL,
-  add = c("highlight", "formatR", "shiny", "shinydashboard", "shinydashboardPlus",
-    "shinyWidgets", "DT", "sortable", "base64enc", "devtools")
+  add = c("tools", "devtools", "formatR", "highlight", "shiny", "shinydashboard",
+    "shinydashboardPlus", "shinyWidgets", "DT", "sortable", "base64enc")
 )
 }
 \arguments{

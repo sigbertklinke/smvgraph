@@ -1,4 +1,3 @@
-smvgraph_env <- new.env()
 #' loggit
 #'
 #' Stores in a temporary file the log messages including messages, warnings and errors. 

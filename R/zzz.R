@@ -1,4 +1,5 @@
 module <- new.env()
+smvgraph_env <- new.env()
 
 .onLoad <- function(libname, pkgname){
   files  <- Sys.glob(file.path(system.file("app", package="smvgraph"), "plot_*.R"))
