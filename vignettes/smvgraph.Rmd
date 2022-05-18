@@ -37,6 +37,34 @@ It is beyond the scope of the package to give the user full access to all possib
 
 Note: If you would like to see a particular non-`ggplot2` graph still integrated, please contact me.
 
+# Installation
+
+The `smvgraph` package can be downloaded with the help of `devtools` package from GitHub.
+
+```{r, eval=FALSE}
+# install.packages("devtools")
+devtools::install_github("sigbertklinke/smvgraph")
+```
+
+Since the Shiny app runs also independently from the package `smvgraph` there are further packages to install:
+
+```{r, eval=FALSE}
+library("smvgraph")
+installPackages()
+```
+
+Additionally some plots depends on other packages. Thus, call
+
+```{r, eval=FALSE}
+splot()
+```
+
+and have a look to messages in the Log tab:
+
+* `plot_99_shouldfail.R          - NA                    : failed to load, ignored` is okay, 
+* `plot_04_bagplot.R             - bagplot_aplpack       : missing packages: aplpack` tells you that the package `aplpack` needs to be installed via `install.packages("aplpack")` if the bagplot should be available, and
+* `plot_01_barplot.R             - barplot               : OK` means that this plot is available. 
+
 # Main window
 
 The main window consists of three parts. On the left the available variables, in the middle the plot area as well as special options for the plot and on the right the list of available plots. 

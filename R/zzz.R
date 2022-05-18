@@ -6,38 +6,62 @@ smvgraph_env <- new.env()
   for (file in files) try(eval(parse(file)), silent=TRUE)
 }
 
-#
-#if (FALSE) {
-#  library("smvgraph")
-#  sandrews(iris)
-#  sandrews(normalize(iris, 0))
-#  schernoff(iris)
-#  schernoff(normalize(iris, 0))
-#  spairs(iris)
-#  spairs(normalize(iris, 0))
-#  sparcoord(iris)
-#  sparcoord(normalize(iris, 0))
-#  sradar(iris)
-#  sradar(normalize(iris, 0))
-#  m <- matrix(runif(36), ncol=4)
-#  sandrews(m)
-#  schernoff(m)
-#  spairs(m)
-#  sparcoord(m)
-#  sradar(m)
-#  #
-#  smosaic(Titanic)
-#  smosaic(toDataframe(Titanic))
-#  m <- matrix(sample(1:6, size=36, replace = TRUE), ncol=4)
-#  smosaic(m)
-#  t <- Titanic
-#  dimnames(t) <- NULL
-#  smosaic(t)
-#  #
-#  sdistance(iris)
-#  #
-#  sdbscan(iris)
-#  shclust(iris)
-#  skmeans(iris)
-#  smclust(iris)
+#.onAttach <- function(libname, pkgname){
+#  if (interactive()) {
+#    packageStartupMessage("To finish the installation call 'installPackages()' once! You may read the vignette 'vignette(\"smvgraph\")', too.")
+#  }
 #}
+
+#' zzz
+#'
+#' Runs all `s...` functions for test purposes if interactively called.
+#'
+#' @return nothing
+#' @importFrom stats runif
+#' @rawNamespace import(shiny, except=c(dataTableOutput, renderDataTable))
+#' @importFrom shinyWidgets progressBar
+#' @rawNamespace import(shinydashboardPlus, except=progressBar)
+#' @import DT 
+#' @import sortable 
+#' @import base64enc
+#' @export
+#'
+#' @examples
+#' zzz()
+zzz <- function() {
+  if (interactive()) {
+#    library("smvgraph")
+    sandrews(datasets::iris)
+    sandrews(normalize(datasets::iris, 0))
+    schernoff(datasets::iris)
+    schernoff(normalize(datasets::iris, 0))
+    spairs(datasets::iris)
+    spairs(normalize(datasets::iris, 0))
+    sparcoord(datasets::iris)
+    sparcoord(normalize(datasets::iris, 0))
+    sradar(datasets::iris)
+    sradar(normalize(datasets::iris, 0))
+    m <- matrix(runif(36), ncol=4)
+    sandrews(m)
+    schernoff(m)
+    spairs(m)
+    sparcoord(m)
+    sradar(m)
+    #
+    smosaic(datasets::Titanic)
+    smosaic(toDataframe(datasets::Titanic))
+    m <- matrix(sample(1:6, size=36, replace = TRUE), ncol=4)
+    smosaic(m)
+    t <- datasets::Titanic
+    dimnames(t) <- NULL
+    smosaic(t)
+    #
+    sdistance(datasets::iris)
+    #
+    sdbscan(datasets::iris)
+    shclust(datasets::iris)
+    skmeans(datasets::iris)
+    smclust(datasets::iris)
+  }
+}
+

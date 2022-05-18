@@ -8,7 +8,7 @@
 #'
 #' @md
 #' @return nothing
-#' @import shiny
+#' @importFrom shiny shinyOptions
 #' @importFrom graphics par
 #' @export
 #'
@@ -16,7 +16,7 @@
 #' if (interactive()) sradar(iris)
 sradar <- function(data, xvar=character(0), ...) {
   #main <- paste(deparse(substitute(data), 500), collapse = "\n")
-  xvar <- if (length(xvar)==0) names(data)[sapply(data, class) %in% c("integer", "numeric")] else intersect(xvar, names(data))
+  xvar <- getVariableNames(data, xvar)
   if (length(xvar)<3) stop("At least three variables required")  
   # 
   oldpar <- graphics::par(no.readonly = TRUE)

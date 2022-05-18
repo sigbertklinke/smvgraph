@@ -8,7 +8,7 @@
 #'
 #' @md
 #' @return nothing
-#' @import shiny
+#' @importFrom shiny shinyOptions
 #' @importFrom graphics pairs
 #' @export
 #'
@@ -16,7 +16,7 @@
 #' if (interactive()) spairs(iris)
 spairs <- function(data, xvar=character(0), ...) {
   #main <- paste(deparse(substitute(data), 500), collapse = "\n")
-  xvar <- if (length(xvar)==0) names(data)[sapply(data, class) %in% c("integer", "numeric")] else intersect(xvar, names(data))
+  xvar <- getVariableNames(data, xvar)
   if (length(xvar)<2) stop("At least two variables required")
   # 
   oldpar <- graphics::par(no.readonly = TRUE)

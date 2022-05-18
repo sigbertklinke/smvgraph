@@ -1,8 +1,6 @@
 #' @rdname numeric_data
 #' @title numeric_data
-#'
-#' Converts a vector, matrix or data frame into a numeric vector, matrix or data frame.
-#'
+#' @description Converts a vector, matrix or data frame into a numeric vector, matrix or data frame.
 #' @param x vector, matrix or data frame
 #' @param select vector: indicating columns to select (default: \code{NULL}) 
 #' @param out output as `data.frame` (default), `matrix`, or `vector`

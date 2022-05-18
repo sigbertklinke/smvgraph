@@ -18,13 +18,13 @@
 #'
 #' @md
 #' @return nothing
-#' @import shiny
+#' @importFrom shiny shinyOptions
 #' @export
 #'
 #' @examples
 #' if (interactive()) sdistance(iris)
 sdistance <- function(data, xvar=character(0), ...) {
-  xvar <- if (length(xvar)==0) names(data)[sapply(data, class) %in% c("integer", "numeric")] else intersect(xvar, names(data))
+  xvar <- getVariableNames(data, xvar)
   if (length(xvar)<2) stop("At least two variables required")
   # 
   oldpar <- graphics::par(no.readonly = TRUE)

@@ -1,14 +1,14 @@
 #' splot
-#'
+#' 
 #' Shiny app for choosing a specific plot.
-#'
+#' 
 #' @param data data.frame: input data
 #' @param xvar character: selected variables (default: \code{character(0)})
 #' @param path character: path where to read the plot modules (default: \code{NULL})
 #'
 #' @md
 #' @return nothing
-#' @import shiny 
+#' @importFrom shiny shinyOptions 
 #' @export
 #'
 #' @examples

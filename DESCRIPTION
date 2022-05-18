@@ -16,8 +16,13 @@ Imports:
     devtools,
     formatR,
     highlight,
-    shiny
-RoxygenNote: 7.1.2
+    shiny,
+    DT, 
+    base64enc, 
+    shinyWidgets, 
+    shinydashboardPlus, 
+    sortable
+RoxygenNote: 7.2.0
 Roxygen: list(markdown = TRUE)
 Suggests: 
     testthat (>= 3.0.0),

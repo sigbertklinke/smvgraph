@@ -5,9 +5,7 @@
 \alias{numeric_data.default}
 \alias{numeric_data.matrix}
 \alias{numeric_data.data.frame}
-\title{numeric_data
-
-Converts a vector, matrix or data frame into a numeric vector, matrix or data frame.}
+\title{numeric_data}
 \usage{
 numeric_data(x, ...)
 
@@ -54,8 +52,6 @@ numeric_data(x, ...)
 the desired R object
 }
 \description{
-numeric_data
-
 Converts a vector, matrix or data frame into a numeric vector, matrix or data frame.
 }
 \examples{
