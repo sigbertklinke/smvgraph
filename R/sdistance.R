@@ -24,6 +24,7 @@
 #' @examples
 #' if (interactive()) sdistance(iris)
 sdistance <- function(data, xvar=character(0), ...) {
+  if (missing(data)) data <- smvgraph::testdata
   xvar <- getVariableNames(data, xvar)
   if (length(xvar)<2) stop("At least two variables required")
   # 

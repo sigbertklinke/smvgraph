@@ -49,7 +49,7 @@ UIdistance <- function(sel=getShinyOption("smvgraph.current")$smvgraph_distance)
 #' @rdname UI
 #' @export
 UIobservations <- function(n, sel=getShinyOption("smvgraph.current")$smvgraph_obs) {
-  if (is.null(sel)) sel <- c(1, 25)
+  if (is.null(sel)) sel <- c(1, 2)
   sliderInput("smvgraph_obs", "Observation range", 1, n, sel, 1)
 }
 

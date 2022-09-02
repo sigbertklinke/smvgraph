@@ -22,7 +22,7 @@ Imports:
     shinyWidgets, 
     shinydashboardPlus, 
     sortable
-RoxygenNote: 7.2.0
+RoxygenNote: 7.2.1
 Roxygen: list(markdown = TRUE)
 Suggests: 
     testthat (>= 3.0.0),

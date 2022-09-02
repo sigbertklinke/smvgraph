@@ -15,7 +15,7 @@
 #' @examples
 #' if (interactive()) spairs(iris)
 spairs <- function(data, xvar=character(0), ...) {
-  #main <- paste(deparse(substitute(data), 500), collapse = "\n")
+  if (missing(data)) data <- smvgraph::testdata
   xvar <- getVariableNames(data, xvar)
   if (length(xvar)<2) stop("At least two variables required")
   # 

@@ -30,7 +30,7 @@ module[["radarchart_fmsb"]] <- list(
              x=as_param(txt(row.names(analysis)), fun="c"),
              g=as_param(txt(row.names(group)), fun="c"),
              from=getval(input$smvgraph_obs[1], 1),
-             to=getval(input$smvgraph_obs[2], 25),
+             to=getval(input$smvgraph_obs[2], sum(is.finite(rowSums(data[,row.names(analysis)])))),
              len=getval(diff(input$smvgraph_obs)+1, 1),
              n=getval(diff(input$smvgraph_obs), 24)+1,
              sel=getval(input$radarchart_fmsb_sel, 0),

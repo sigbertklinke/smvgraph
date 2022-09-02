@@ -31,7 +31,7 @@ module[["distance_plot"]] <- list(
              ",
              x=as_param(txt(row.names(analysis)), fun="c"),
              left=getval(input$smvgraph_obs[1], 1),
-             right=getval(input$smvgraph_obs[2], 25),
+             right=getval(input$smvgraph_obs[2], sum(is.finite(rowSums(data[,row.names(analysis)])))),
              getval(input$distance_plot_covar, TRUE) #1                        
              )
   },
