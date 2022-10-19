@@ -3,13 +3,13 @@ module[["bagplot_aplpack_pairs"]] <- list(
   help  = "aplpack::bagplot.pairs",
   packages = "aplpack",
   usable = function(analysis, group, data, input) {
-    (nrow(analysis)>2) && (nrow(group)==0)
+    (nrow(analysis)>2) && isTRUE(all(analysis$unique>1)) && (nrow(group)==0)
   },
   code = function(analysis, group, data, input) {
     template("
              0:   library('aplpack')
              0:   x <- numeric_data(data, select={{x}})
-             0:   x <- x[is.finite(rowSums(x)),]
+             0:   x <- jitter_min(x[valid(x,1),])
              0:   bagplot.pairs(x, factor={{factor}}, pch={{pch}}, cex={{cex}})
              ", 
              x=as_param(txt(row.names(analysis)), fun="c"),

@@ -6,6 +6,7 @@
 #' * `missing` the number of missing values
 #' * `infinite` the number of infinite values
 #' * `unique` the number of unique values
+#' * `valid` the number of unique valid values (see [smvgraph::valid])
 #' * `values` the values with the decreasing frequency
 #'
 #' @param data data frame: input data set
@@ -23,6 +24,7 @@ getVariableInfo <- function(data, n=47) {
     infinite = sapply(data, function(e) { sum(is.infinite(e))}),
     finite   = sapply(data, function(e) { sum(is.finite(e))}),
     unique   = sapply(data, function(e) { length(unique(e))}),
+    valid    = sapply(data, function(e) { length(unique(e[valid(e)]))}),
     values   = sapply(data, function(e) { 
       v <- paste0(names(sort(table(e, useNA="ifany"), decreasing=TRUE)), collapse=", ")
       if (nchar(v)>n) v <- paste0(substr(v, 1, n), '...')

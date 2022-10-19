@@ -13,10 +13,10 @@ module[["mclust_plot"]] <- list(
 0:        keep <- is.finite(rowSums(x))
 0:        x <- x[keep,]
 !1:       x  <- scale(x)
-0:        pc <- principal(x, 2, rotate='none', covar=TRUE)
+0:        pc <- prcomp(x)
 0:        em_cl <- Mclust(x, G={{n}}, modelNames={{model}})
 0:        col <- hcl.colors(max(em_cl$classification))[em_cl$classification]
-0:        plot(pc$scores, col=col, pch=19)
+0:        plot(pc$x[,1:2], col=col, pch=19)
              ",
              x=as_param(txt(row.names(analysis)), fun="c"),
              n=getval(input$mclust_plot_n, 2),

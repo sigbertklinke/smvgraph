@@ -12,13 +12,13 @@ module[["hclust_plot"]] <- list(
 0:        keep <- is.finite(rowSums(x))
 0:        x  <- x[keep,]
 !1:       x  <- scale(x)
-0:        pc <- principal(x, 2, rotate='none', covar=TRUE)
+0:        pc <- prcomp(x)
 0:        d  <- dist(x, {{dist}})
 0:        hc_cl <- hclust(d, {{method}})
 0:        colcl <- hcl.colors({{n}})
 0:        clt   <- cutree(hc_cl, {{n}})
 0:        layout(mat = matrix(c(1,1,2,1,1,3), ncol=2))
-0:        plot(pc$scores, col=colcl[clt], pch=19)
+0:        plot(pc$x[,1:2], col=colcl[clt], pch=19)
 0:        # dendrogram
 0:        rheight <- rev(hc_cl$height)
 0:        rh <- (rheight[{{n}}-1]+rheight[{{n}}])/2

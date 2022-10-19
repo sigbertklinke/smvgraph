@@ -3,7 +3,7 @@ module[["qqplot_car"]] <- list(
   help  = "car::qqPlot",
   packages = "car",
   usable = function(analysis, group, data, input) {
-    (nrow(analysis)==1) && (nrow(group)<2)
+    (nrow(analysis)==1) && (analysis$unique>1) && (nrow(group)<2) && (prod(group$unique)<13)
   },
   code = function(analysis, group, data, input) {
     template("
@@ -11,7 +11,7 @@ module[["qqplot_car"]] <- list(
              0:    x <- numeric_data({{x}}, out='vector')
              0:    keep <- is.finite(x)
              0:    x <- x[keep]
-             1:    grp <- group_data(data, select={{g}}, out='vector')[keep]
+             1:    grp <- factor_data(data, select={{g}}, out='vector')[keep]
              2&!1: qqPlot(x, pch={{pch}}, cex={{cex}}, distribution='norm', mean=mean(x), sd=sd(x), line={{line}})
              2&1:  qqPlot(x, pch={{pch}}, cex={{cex}}, distribution='norm', mean=mean(x), sd=sd(x),  line={{line}}, group=grp)
              ", 

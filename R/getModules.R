@@ -37,6 +37,7 @@ getModules <- function(pattern, path=getShinyOption("smvgraph.path")) {
       pkgs <- sapply(pkgs, require,  quietly=TRUE, character.only = TRUE)
       if(!all(pkgs)) msg <- sprintf("missing packages: %s", paste0(names(pkgs)[!pkgs], collapse=","))
       listofplot[nrow(listofplot)+1,] <- list(file=file, type=npts[i], msg=msg) 
+      module[[npts[i]]]$source <- file
     }  
   }
   # errors
@@ -45,7 +46,6 @@ getModules <- function(pattern, path=getShinyOption("smvgraph.path")) {
   delplot    <- listofplot$type[!is.na(listofplot$msg) & !is.na(listofplot$type)]
   listofplot$msg[is.na(listofplot$msg)] <- "OK"
   # build infotxt
-  
   infotxt <- c(sprintf("Path: %s", path),
                paste0(sprintf("%*s - ", -max(nchar(basename(listofplot$file)), na.rm=TRUE), basename(listofplot$file)),
                             sprintf("%*s : ", -max(nchar(listofplot$type), na.rm=TRUE),  listofplot$type), 

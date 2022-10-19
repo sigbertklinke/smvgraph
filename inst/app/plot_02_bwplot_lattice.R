@@ -6,9 +6,10 @@ module[["bwplot_lattice"]] <- list(
   },
   packages = c("lattice"),
   code = function(analysis, group, data, input) {
-    formula <- sprintf("%s~%s", input$analysis_var[1], input$group_var[1])
-    if (length(input$group_var)>1) 
-      formula <- paste0(formula, "|", paste0(input$group_var[-1], collapse="+"))
+    rn <- row.names(analysis)
+    gn <- row.names(group)
+    formula <- sprintf("%s~%s", rn, gn[1])
+    if (length(input$group_var)>1) formula <- paste0(formula, "|", paste0(gn[-1], collapse="+"))
     template("
              0:  library('lattice')
              0:  x   <- cbind(numeric_data(data, select={{x}}),

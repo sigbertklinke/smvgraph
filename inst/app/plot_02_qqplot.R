@@ -20,7 +20,7 @@ module[["qqplot"]] <- list(
              g=sprintf("subset(data, select=c(%s))", paste0("'", row.names(group), "'", collapse=", ")), 
              pch=getval(input$smvgraph_pch,1),
              cex=getval(input$smvgraph_cex,1),
-             lwd=txt(getval(input$smvgraph_lwd, "solid")),
+             lwd=getval(input$smvgraph_lwd, 1),
              lty=getval(input$smvgraph_lty,1),
              lex=getval(input$smvgraph_lex,1),
              pos=sprintf("'%s'", getval(input$smvgraph_legend, "topleft")),

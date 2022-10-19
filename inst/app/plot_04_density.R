@@ -2,13 +2,13 @@ module[["density"]] <- list(
   label = "Kernel density",
   help  = "stats::density",
   usable = function(analysis, group, data, input) {
-    (nrow(analysis)==1) && (prod(group$unique)<43)
+    (nrow(analysis)==1) && (prod(analysis$unique)>1) && (valid(data[,row.names(analysis)], 1, TRUE)>9) & (prod(group$unique)<43)
   },
   code = function(analysis, group, data, input) {
     template("
-             0:  x <- numeric_data(data, select={{x}}, out='vector')
-             0:  keep <- is.finite(x)
-             0:  x <- x[keep]
+             0:  x    <- numeric_data(data, select={{x}}, out='vector')
+             0:  keep <- valid(x, 1)
+             0:  x    <- x[keep]
              !2: dens <- density(x, bw={{bw}}, kernel={{kernel}}, adjust={{adjust}})
              !2: plot(dens, lwd=2)
              2:  col  <- color_data(data, select={{g}})[keep]
@@ -24,8 +24,8 @@ module[["density"]] <- list(
              x=as_param(txt(row.names(analysis)), fun="c"),
              g=as_param(txt(row.names(group)), fun="c"),
              pos=txt(getval(input$smvgraph_legend, "topleft")),
-             bw=txt(getval(input$density_bw, "SJ")),
-             bwfun=getval(input$density_bw, "SJ"),
+             bw=txt(getval(input$density_bw, "nrd0")),
+             bwfun=getval(input$density_bw, "nrd0"),
              kernel=txt(getval(input$density_kernel, "gaussian")),
              adjust=getval(input$density_adjust, 1),
              pos=txt(getval(input$smvgraph_legend, "topleft")),

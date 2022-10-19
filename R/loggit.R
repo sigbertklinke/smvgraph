@@ -4,9 +4,6 @@
 #'
 #' @param log_lvl character: Level of log output. In actual practice, one of "DEBUG", "INFO", "WARN", and "ERROR" are common, but any string may be supplied
 #' @param log_msg character: Main log message
-#' @inheritParams base::stop 
-#' @inheritParams base::warning 
-#' @inheritParams base::message
 #' @aliases stop warning message read_logs
 #'
 #' @return Nothing.
@@ -44,28 +41,4 @@ read_logs <- function() {
 set_logfile <- function() {
   smvgraph_env$logfile <- tempfile(pattern = "loggit", fileext = ".rds", tmpdir = tempdir(TRUE))
   smvgraph_env$loglist <- list(log_time=Sys.time(), log_lvl="DEBUG", log_msg=sprintf("Created logfile %s", smvgraph_env$logfile))
-}
-
-#' @rdname loggit
-#' @export
-message <- function(..., domain = NULL, appendLF = TRUE) {
-  args <- paste(list(...), collapse = "")
-  loggit(log_lvl = "INFO", log_msg = args)
-  base::message(unlist(args), domain = domain, appendLF = appendLF)
-}
-
-#' @rdname loggit
-#' @export
-warning <- function(..., call. = TRUE, immediate. = FALSE, noBreaks. = FALSE,  domain = NULL) {
-  args <- paste(list(...), collapse = "")
-  loggit(log_lvl = "WARN", log_msg = args[[1]])
-  base::warning(unlist(args), call. = call., immediate. = immediate., noBreaks. = noBreaks., domain = domain)
-}
-
-#' @rdname loggit
-#' @export
-stop <- function(..., call. = TRUE, domain = NULL) {
-  args <- paste(list(...), collapse = "")
-  loggit(log_lvl = "ERROR", log_msg = args[[1]])
-  base::stop(unlist(args), call. = call., domain = domain)
 }

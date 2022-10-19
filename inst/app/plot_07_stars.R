@@ -9,7 +9,7 @@ module[["radarchart_mass"]] <- list(
     template("
              0:   library('MASS')
              0:   x   <- numeric_data(data, select={{x}})
-             0:   xn <- normalize(x)
+             0:   xn  <- normalize(x)
              0:   xt  <- dimnames(x)[[1]]
              1:   col <- color_data(data, select={{g}})
              0:   lo  <- toLayout({{len}}, sel = {{sel}}, unused=2)

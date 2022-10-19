@@ -9,7 +9,7 @@ module[["faces_aplpack"]] <- list(
     template("
              0:   library('aplpack')
              0:   x   <- numeric_data(data, select={{x}})
-             0:   x   <- x[is.finite(rowSums(x)),]
+             0:   x   <- x[valid(x, 1),]
              0:   xt  <- dimnames(x)[[1]]
              0:   lo  <- toLayout({{len}}, sel = {{sel}})
              0:   ind <- {{from}}:{{to}}
@@ -26,8 +26,7 @@ module[["faces_aplpack"]] <- list(
             )
   },
   ui = function(analysis, group, data, input) {
-    x       <- data[,row.names(analysis)]
-    list(UIobservations(sum(is.finite(rowSums(x)))),
+    list(UIobservations(valid(data[,row.names(analysis)], 1, TRUE)),
          sliderInput("faces_aplpack_sel", "Less rows <-> More rows", -5, 5, 0),
          selectInput("faces_aplpack_type", "Face type",
                      choices=list("Line faces"=0, "Painted faces"=1, "Santa Claus faces"=2))

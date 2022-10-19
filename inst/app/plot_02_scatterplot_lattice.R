@@ -13,7 +13,7 @@ module[["scatterplot_lattice"]] <- list(
              1:   grp <- group_data(data, select={{g}}, out='data.frame')
              1:   names(grp) <- '.group'
              0:   x <- cbind(numeric_data(data, select={{x}}), grp)
-             !1:   xyplot({{xy}}|{{group}}, data=x, pch={{pch}}, cex={{cex}})
+             !1:  suppressWarnings(xyplot({{xy}}|{{group}}, data=x, pch={{pch}}, cex={{cex}}))
              1:   xyplot({{xy}}|.group, group=grp$.group, data=x, pch={{pch}}, cex={{cex}})
              ", 
              x=as_param(txt(row.names(analysis)), fun="c"),

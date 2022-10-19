@@ -2,7 +2,7 @@ module[["mosaicplot"]] <- list(
   label = "Mosaic plot",
   help  = "graphics::mosaicplot",
   usable = function(analysis, group, data, input) {
-    (nrow(analysis)>1) && (nrow(group)==0) && isTRUE(all(analysis$unique<13))
+    (nrow(analysis)>1) && isTRUE(all(analysis$unique>1)) && isTRUE(all(analysis$unique<13)) && (nrow(group)==0) 
   },
   code = function(analysis, group, data, input) {
     template("

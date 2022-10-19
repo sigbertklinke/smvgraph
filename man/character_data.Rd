@@ -2,32 +2,9 @@
 % Please edit documentation in R/character_data.R
 \name{character_data}
 \alias{character_data}
-\alias{character_data.default}
-\alias{character_data.matrix}
-\alias{character_data.data.frame}
 \title{character_data}
 \usage{
-character_data(x, ...)
-
-\method{character_data}{default}(
-  x,
-  select = NULL,
-  out = c("data.frame", "matrix", "vector"),
-  na.action = "NA",
-  ...,
-  title = NULL
-)
-
-\method{character_data}{matrix}(
-  x,
-  select = NULL,
-  out = c("data.frame", "matrix", "vector"),
-  na.action = "NA",
-  ...,
-  title = NULL
-)
-
-\method{character_data}{data.frame}(
+character_data(
   x,
   select = NULL,
   out = c("data.frame", "matrix", "vector"),
@@ -39,13 +16,13 @@ character_data(x, ...)
 \arguments{
 \item{x}{vector, matrix or data frame}
 
-\item{...}{unused}
-
 \item{select}{vector: indicating columns to select (default: \code{NULL})}
 
 \item{out}{output as \code{data.frame} (default), \code{matrix}, or \code{vector}}
 
 \item{na.action}{function or character: indicates what should happen when the data contain NAs}
+
+\item{...}{unused}
 
 \item{title}{character: title attribute (default \code{NULL})}
 }
@@ -54,7 +31,7 @@ the desired R object
 }
 \description{
 Converts a matrix or data frame into a character vector, matrix or data frame. If \code{na.action} is a character then
-all \code{NA}s are replaced by \code{na.action} (default: na.action="NA"\verb{). If }na.action` is a function then the function will be
+all \code{NA}s are replaced by \code{na.action} (default: \code{na.action="NA"}). If \code{na.action} is a function then the function will be
 applied to the result.
 }
 \examples{

@@ -13,7 +13,7 @@ color_data(x, colpal = grDevices::hcl.colors, select = NULL, ..., title = NULL)
 
 \item{select}{vector: indicating columns to select (default: \code{1})}
 
-\item{...}{further parameters to \link{group_data}}
+\item{...}{further parameters to \link{factor_data}}
 
 \item{title}{character: title attribute (default \code{NULL})}
 }
@@ -25,6 +25,5 @@ Assigns a color to the data \code{x} based on the color palette \code{colpal}.
 }
 \examples{
 color_data(iris)
-color_data(as.matrix(iris))
 color_data(iris$Species)
 }

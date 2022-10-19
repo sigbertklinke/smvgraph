@@ -6,11 +6,17 @@ smvgraph_env <- new.env()
   for (file in files) try(eval(parse(file)), silent=TRUE)
 }
 
-#.onAttach <- function(libname, pkgname){
-#  if (interactive()) {
-#    packageStartupMessage("To finish the installation call 'installPackages()' once! You may read the vignette 'vignette(\"smvgraph\")', too.")
-#  }
-#}
+.onAttach <- function(libname, pkgname){
+  if (interactive()) {
+     pkgs <- c("tools", "devtools",  "formatR", "highlight", "shiny", "shinydashboard", "shinydashboardPlus", "shinyWidgets", "DT", "sortable", "base64enc")
+     ret  <- structure(rep(NA, length(pkgs)), names=pkgs)
+     for (pkg in pkgs) ret[pkg] <- !nzchar(system.file(package=pkg))
+     if(any(ret)) {
+        msg <- sprintf("Packages(s) not yet installed: %s\n", paste0(names(ret)[ret], collapse=', ')) 
+        packageStartupMessage(msg, "To finish the installation call 'installPackages()' once! You may read the vignette 'vignette(\"smvgraph\")', too.")
+     }
+  }
+}
 
 #' zzz
 #'

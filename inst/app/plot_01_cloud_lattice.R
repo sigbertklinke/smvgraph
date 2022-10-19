@@ -6,8 +6,10 @@ module[["cloud_lattice"]] <- list(
   },
   packages = c("lattice"),
   code = function(analysis, group, data, input) {
-    formula <- sprintf("%s~%s+%s", input$analysis_var[1], input$analysis_var[2], input$analysis_var[3])
-    if (length(input$group_var)>0) formula <- paste0(formula, "|", paste0(input$group_var, collapse="*"))
+    rn <- row.names(analysis)
+    gn <- row.names(group)
+    formula <- sprintf("%s~%s+%s", rn[1], rn[2], rn[3])
+    if (nrow(group)>0) formula <- paste0(formula, "|", paste0(gn, collapse="*"))
     template("
              0:  library('lattice')
              !1: x   <- numeric_data(data, select={{x}}) 

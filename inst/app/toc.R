@@ -4,7 +4,7 @@ d <- packageVersion("smvgraph")
 library("htmltools")
 library("smvgraph")
 data <- data.frame(A1=runif(10), A2=runif(10), A3=runif(10), A4=runif(10),# A5=runif(10),
-                   G1=sample(2, 10, T), G2=sample(2, 10, T), G3=sample(2, 10, T), G4=sample(2, 10, T))#, G5=sample(2, 10, T))
+                   G1=sample(2, 10, TRUE), G2=sample(2, 10, TRUE), G3=sample(2, 10, TRUE), G4=sample(2, 10, TRUE))#, G5=sample(2, 10, TRUE))
 dvar        <- getVariableInfo(data)
 
 plotmodule  <- getModules('plot_*.R', path='.')

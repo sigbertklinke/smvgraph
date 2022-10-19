@@ -12,10 +12,10 @@ module[["kmeans_plot"]] <- list(
 0:        keep <- is.finite(rowSums(x))
 0:        x <- x[keep,]
 !1:       x  <- scale(x)
-0:        pc <- principal(x, 2, rotate='none', covar=TRUE)
+0:        pc <- prcomp(x)
 0:        km_cl <- kmeans(x, {{n}})
 0:        col <- hcl.colors(max(km_cl$cluster))[km_cl$cluster]
-0:        plot(pc$scores, col=col, pch=19)
+0:        plot(pc$x[,1:2], col=col, pch=19)
              ",
              x=as_param(txt(row.names(analysis)), fun="c"),
              n=getval(input$kmeans_plot_n, 2),

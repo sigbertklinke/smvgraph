@@ -7,7 +7,7 @@ module[["andrews_smvgraph"]] <- list(
   code = function(analysis, group, data, input) {
     template("
 0:      x   <- numeric_data(data, select={{x}})
-1:      col <- color_hclust(x, normalize={{norm}}, ncol={{col}})[keep]
+1:      col <- color_hclust(x, normalize={{norm}}, ncol={{col}})
 2:      col <- color_data(data, select={{g}})
 1|2:    andrews(x, type={{type}}, normalize={{norm}}, col=col) 
 !(1|2): andrews(x, type={{type}}, normalize={{norm}})  

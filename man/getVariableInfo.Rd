@@ -23,6 +23,7 @@ Returns a data frame with one row for each variable in \code{data}:
 \item \code{missing} the number of missing values
 \item \code{infinite} the number of infinite values
 \item \code{unique} the number of unique values
+\item \code{valid} the number of unique valid values (see \link{valid})
 \item \code{values} the values with the decreasing frequency
 }
 }

@@ -7,7 +7,7 @@ module[["splom_pairs"]] <- list(
   },
   code = function(analysis, group, data, input) {
     template("
-             0: x <- subset(data, select={{x}})
+             0: x <- numeric_data(data, select={{x}})
              1: col <- color_data(data, select={{g}})
              !1: pairs(x, pch={{pch}}, cex={{cex}})
              1: pairs(x, pch={{pch}}, cex={{cex}}, col=col)

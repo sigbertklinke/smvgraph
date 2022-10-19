@@ -3,7 +3,7 @@ module[["density_sm"]] <- list(
   help  = "sm::sm.density",
   packages = "sm",
   usable = function(analysis, group, data, input) {
-    (nrow(analysis)==1) && (prod(group$unique)<43)
+    (nrow(analysis)==1) && isTRUE(all(analysis$unique>3)) && (prod(group$unique)<13)
   },
   code = function(analysis, group, data, input) {
     template("
@@ -49,7 +49,7 @@ module[["density_sm2"]] <- list(
   help  = "sm::sm.density",
   packages = "sm",
   usable = function(analysis, group, data, input) {
-    (nrow(analysis)==2) && (nrow(group)==0)
+    (nrow(analysis)==2) && (nrow(group)==0) &&  isTRUE(all(analysis$unique>3))
   },
   code = function(analysis, group, data, input) {
     template("

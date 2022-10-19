@@ -31,7 +31,7 @@ checkPackages <- function(..., plotmodule=NULL,
   }
   if(error && !all(ret)) {
     msg <- sprintf("%i packages(s) are missing, please install with 'installPackages(%s)'", sum(!ret), 
-                   if (length(plotmodule)) paste0(sQuote(plotmodule), collapse=",") else "")
+                   if (length(plotmodule)) paste0(sQuote(plotmodule), collapse=", ") else "")
     stop(msg)
   }
   ret

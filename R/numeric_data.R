@@ -15,49 +15,31 @@
 #' numeric_data(iris)
 #' numeric_data(iris, out="matrix")
 #' numeric_data(iris, out="vector")
-numeric_data   <- function(x, ...)   { UseMethod("numeric_data") }
-
-#' @rdname numeric_data
-#' @export
-numeric_data.default <- function(x, out=c("data.frame", "matrix", "vector"), na.action=stats::na.pass,  ..., title=NULL) {
+numeric_data <- function (x, select=NULL, out=c("data.frame", "matrix", "vector"),  na.action=stats::na.pass,  ..., title=NULL) {
   stopifnot(length(x)>0)
+  if (!inherits(x, "data.frame")) x <- as.data.frame(x)
   out <- match.arg(out) 
-  vx  <- x
-  if (!is.numeric(vx)) {
-    vx  <- factor(as.character(vx))
-    vx <- structure(as.numeric(vx), levels=levels(vx))
+  # col names
+  nx  <- names(x)
+  if (is.null(nx)) nx <- rep('', ncol(x))
+  names(x) <- ifelse(nchar(nx)==0, sprintf("V%i", 1:ncol(x)), nx)
+  # row names
+  nx <- rownames(x)
+  if (is.null(nx)) nx <- rep('', nrow(x))
+  rownames(x) <- ifelse(nchar(nx)==0, sprintf("%i", 1:nrow(x)), nx)
+  #
+  if (is.null(select)) select <- names(x)
+  vx <- x[,select,drop=FALSE]
+  vx <- na.action(data.matrix(vx))
+  if (out=="data.frame") {
+    vx <- as.data.frame(vx)
   }
-  coln <- getval(title, attr(x, 'title'))
-  tit  <- getval(attr(x, 'title'), title)
-  na.action(convertTo(vx, coln=coln, rown=names(x), title=tit, out=out))
-}
-
-#' @rdname numeric_data
-#' @export
-numeric_data.matrix <- function(x, select=NULL, out=c("data.frame", "matrix", "vector"), na.action=stats::na.pass, ..., title=NULL) {
-  stopifnot(length(x)>0)
-  out <- match.arg(out) 
-  vx  <- if (is.null(select)) x else x[,select,drop=FALSE]
-  if (!is.numeric(vx)) {
-    vx  <- apply(vx, 2, function(v) {
-      as.numeric(factor(as.character(v)))
-    })
+  if (out=="vector") {
+    rn <- rownames(vx)
+    cn <- colnames(vx)
+    vx <- as.numeric(vx)
+    names(vx) <- apply(as.matrix(rev(expand.grid(rn, cn, stringsAsFactors = FALSE))), 1, paste, collapse=",")
   }
-  tit <- getval(attr(x, 'title'), title, paste0(colnames(vx), collapse=","))
-  na.action(convertTo(vx, coln=colnames(vx), rown=rownames(vx), title=tit, out=out))
-}
-
-#' @rdname numeric_data
-#' @export
-numeric_data.data.frame <- function(x, select=NULL, out=c("data.frame", "matrix", "vector"), na.action=stats::na.pass, ..., title=NULL) {
-  stopifnot(length(x)>0)
-  out <- match.arg(out) 
-  vx  <- if (is.null(select)) x else x[,select,drop=FALSE]
-  vx  <- lapply(vx, function(v) {
-    if (is.numeric(v)) return(v)
-    v <- factor(as.character(v))
-    structure(as.numeric(v), levels=levels(v))
-  })
-  tit <- getval(attr(x, 'title'), title, paste0(names(vx), collapse=","))
-  na.action(convertTo(as.data.frame(vx), coln=names(vx), rown=rownames(vx), title=tit, out=out))
+  tit <- getval(attr(x, 'title'), title, paste0(select, collapse=","))
+  structure(na.action(vx), title=tit, out=out)
 }

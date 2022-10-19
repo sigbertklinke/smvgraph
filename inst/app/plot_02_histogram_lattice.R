@@ -6,9 +6,11 @@ module[["histogram_lattice"]] <- list(
     (nrow(analysis)==1) 
   },
   code = function(analysis, group, data, input) {
-    formula <- sprintf("~%s", input$analysis_var)
+    rn <- row.names(analysis)
+    gn <- row.names(group)
+    formula <- sprintf("~%s", rn)
     if (length(input$group_var)>0) 
-      formula <- paste0(formula, "|", paste0(input$group_var, collapse="*"))
+      formula <- paste0(formula, "|", paste0(gn, collapse="*"))
     template("
              0:  library('lattice')
              1:  x <- cbind(numeric_data(data, select={{x}}),

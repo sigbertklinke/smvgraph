@@ -1,6 +1,6 @@
 module[["edcf"]] <- list(
   label = "Cumulative Distribution",
-  help  = "stat::ecdf",
+  help  = "stats::ecdf",
   usable = function(analysis, group, data, input) {
     (nrow(analysis)==1) && (prod(group$unique)<43)
   },

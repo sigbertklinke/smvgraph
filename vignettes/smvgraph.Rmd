@@ -120,3 +120,21 @@ The R help for the plot command used is displayed in the `R Help` tab.
 <center>
 <img src="smvgraph_help.png" width="100%">
 </center>
+
+# Problems
+
+## `aplpack::bagplot`, `aplpack::bagplot.pairs`
+
+Sometimes a bagplot may fail with a error as the example shows:
+
+```{r, eval=FALSE}
+library("aplpack")
+x <- c(5, 2, 1, 6, 3, 5, 4, 7, 4, 4, 3, 4, 5, 4, 6, 3, 3)
+y <- c(2, 3, 4, 6, 7, 8, 10, 11, 12, 13, 1, 14, 17, 18, 19, 20, 22)
+bagplot(y,x) # works
+bagplot(x,y) # Error in pg[segm.no, 2] : (subscript) boolean index too long
+```
+
+## `psych::fa`, `psych::principal`
+
+Depending on the data a warning can be produced: `An ultra-Heywood case was detected. Examine the results carefully`
