@@ -17,5 +17,4 @@
 #'   \item{g0}{`rep("constant, n)`}
 #'   \item{g2}{`sample(c(T,F), size=n, replace=TRUE)`}
 #' }
-#' @source \url{http://www.diamondse.info/}
 "testdata"

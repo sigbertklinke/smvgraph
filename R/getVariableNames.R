@@ -17,6 +17,7 @@
 getVariableNames <- function(x, xvar=NULL, num=TRUE) {
   if (is.matrix(x)) {
     names <- colnames(x)
+    if (is.null(names)) stop("matrix without column names")
     if(xor(is.numeric(x[1,1]), num)) names <- character(0)
   } else {
     names <- names(x)

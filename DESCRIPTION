@@ -2,7 +2,7 @@ Package: smvgraph
 Type: Package
 Title: Visualization and Clustering of Data in a Shiny App
 Version: 0.2.0
-Date: 2022-03-23
+Date: 2022-12-04
 Authors@R: 
   person("Sigbert", "Klinke", email="sigbert@hu-berlin.de", role=c("aut", "cre"))
 Description: Various visualisations of univariate and multivariate graphs (e.g. mosaic diagram, scatterplot matrix, 
@@ -10,6 +10,7 @@ Description: Various visualisations of univariate and multivariate graphs (e.g. 
     (e.g. k-means, agglomerative, EM clustering and DBSCAN) are implemented as a Shiny app. The app allows interactive
     changes, e.g. of the order of variables. It is intended for use in teaching.
 License: GPL-3
+URL: https://github.com/sigbertklinke/smvgraph (development version)
 Encoding: UTF-8
 Imports: 
     tools,
@@ -23,7 +24,7 @@ Imports:
     shinydashboardPlus, 
     sortable,
     mrfDepth
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.2
 Roxygen: list(markdown = TRUE)
 Suggests: 
     MASS,

@@ -20,6 +20,7 @@
 smosaic <- function(data, xvar=character(0), yvar=character(0), ...) {
   if (missing(data)) data <- smvgraph::testdata
   if (is.table(data)) data <- toDataframe(data)
+  if(!is.data.frame(data)) data <- as.data.frame(lapply(as.data.frame(data), as.factor))
   xvar <- getVariableNames(data, xvar, num=FALSE)
   if (length(xvar)<2) stop("At least two variables required")
   # 

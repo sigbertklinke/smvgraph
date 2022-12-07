@@ -34,7 +34,7 @@
 #' @param width number: width of percentage axis (default: `1`). If `1` then the width is as wide as a plot.
 #' @param height number: percentage of the height of the legends (default: `0.15`)
 #' @return nothing
-#' @references Tennekes, M., Jonge, E. de, Daas, P.J.H. (2013) \href{https://www.jds-online.com/files/JDS-1108.pdf}{Visualizing and Inspecting Large Datasets with Tableplots}, Journal of Data Science 11 (1), 43-58.
+#' @references Tennekes, M., Jonge, E. de, Daas, P.J.H. (2013), Visualizing and Inspecting Large Datasets with Tableplots, Journal of Data Science 11 (1), 43-58.
 #' @export
 #'
 #' @examples

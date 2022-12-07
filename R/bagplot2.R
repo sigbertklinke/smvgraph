@@ -64,7 +64,7 @@ bagplot2 <- function (x, y=NULL, colorbag = NULL, colorloop = NULL,
   data.infence <- data.frame(compbag.result$fence)
   ind.outl <- which(compbag.result$datatype[, 3] == 3)
   data.outliers <- data.frame(compbag.result$datatype[ind.outl, 1:2, drop = FALSE])
-  browser()
+  #browser()
   colnames(data.infence)    <- c("x", "y")
   colnames(data.inloop)     <- c("x", "y")
   colnames(data.inbag)      <- c("x", "y")

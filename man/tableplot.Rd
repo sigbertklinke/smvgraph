@@ -90,5 +90,5 @@ data("Boston", package="MASS")
 tableplot(Boston, bin=sortbin(Boston))
 }
 \references{
-Tennekes, M., Jonge, E. de, Daas, P.J.H. (2013) \href{https://www.jds-online.com/files/JDS-1108.pdf}{Visualizing and Inspecting Large Datasets with Tableplots}, Journal of Data Science 11 (1), 43-58.
+Tennekes, M., Jonge, E. de, Daas, P.J.H. (2013), Visualizing and Inspecting Large Datasets with Tableplots, Journal of Data Science 11 (1), 43-58.
 }

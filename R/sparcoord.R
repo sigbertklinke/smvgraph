@@ -15,6 +15,7 @@
 #' if (interactive()) sparcoord(iris)
 sparcoord <- function(data, xvar=character(0), ...) {
   if (missing(data)) data <- smvgraph::testdata
+  if(!is.data.frame(data)) data <- as.data.frame(data)
   xvar <- getVariableNames(data, xvar)
   if (length(xvar)<3) stop("At least three variables required")
   # 

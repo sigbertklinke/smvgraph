@@ -21,9 +21,6 @@ A data frame with \code{n=25} rows and 8 variables:
 \item{g2}{\code{sample(c(T,F), size=n, replace=TRUE)}}
 }
 }
-\source{
-\url{http://www.diamondse.info/}
-}
 \usage{
 testdata
 }
