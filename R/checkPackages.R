@@ -31,7 +31,7 @@ checkPackages <- function(..., plotmodule=NULL,
   }
   if(error && !all(ret)) {
     msg <- sprintf("%i packages(s) are missing, please install with 'installPackages(%s)'", sum(!ret), 
-                   if (length(plotmodule)) paste0(sQuote(plotmodule), collapse=", ") else "")
+                   if (length(plotmodule)) paste0("\"", plotmodule, "\"", collapse=", ") else "")
     stop(msg)
   }
   ret
@@ -48,7 +48,7 @@ installPackages <- function(plotmodule=NULL, add=c("tools", "devtools",  "format
   if (interactive()) cat("Packages to install: ", paste0(pkgs, collapse=','), "\n   This may take a while....\n\n")
   bpkgs <- basename(pkgs)
   for (i in seq_along(bpkgs)) {
-    if (!require(bpkgs[i], character.only = TRUE)) {
+    if (!require(bpkgs[i], character.only = TRUE, quietly = TRUE)) {
       if (bpkgs[i]==pkgs[i]) utils::install.packages(pkgs[i]) else devtools::install_github(pkgs[i])
     } 
   }
